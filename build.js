@@ -33,16 +33,16 @@ function log(msg) {
 }
 
 function dirSizeMB(p) {
-  let total = 0;
   const walk = (d) => {
+    let total = 0;
     for (const name of readdirSync(d)) {
       const fp = join(d, name);
       const st = statSync(fp);
       total += st.isDirectory() ? walk(fp) : st.size;
     }
+    return total;
   };
-  walk(p);
-  return (total / 1024 / 1024).toFixed(1);
+  return (walk(p) / 1024 / 1024).toFixed(1);
 }
 
 // 1. Docusaurus 文档构建（仅 zh-Hans locale）
