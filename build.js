@@ -69,7 +69,15 @@ rmSync(dist, { recursive: true, force: true });
 mkdirSync(join(dist, "docs"), { recursive: true });
 
 // 落地页 → dist/
-for (const entry of ["index.html", "zh.css", "css", "js", "font", "assets"]) {
+for (const entry of [
+  "index.html",
+  "zh.css",
+  "css",
+  "js",
+  "font",
+  "assets",
+  "BingSiteAuth.xml", // Bing Webmaster 站点验证
+]) {
   const src = join(landing, entry);
   if (!existsSync(src)) {
     console.error(`[build] 缺少落地页资源：landing/${entry}`);
