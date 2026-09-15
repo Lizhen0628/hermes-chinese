@@ -4,7 +4,7 @@ sidebar_label: "Serving Llms Vllm"
 description: "vLLM：高吞吐量 LLM 服务、OpenAI API、量化"
 ---
 
-{/* 此页面由 website/scripts/generate-skill-docs.py 根据技能的 SKILL.md 自动生成。请编辑源 SKILL.md，而非此页面。 */}
+{/* 本页面由 website/scripts/generate-skill-docs.py 根据技能的 SKILL.md 自动生成。请编辑源 SKILL.md，而非本页面。 */}
 
 # Serving Llms Vllm
 
@@ -19,25 +19,25 @@ vLLM：高吞吐量 LLM 服务、OpenAI API、量化。
 | 版本 | `1.0.1` |
 | 作者 | Orchestra Research |
 | 许可证 | MIT |
-| 依赖 | `vllm`、`torch`、`transformers` |
+| 依赖项 | `vllm`、`torch`、`transformers` |
 | 平台 | linux、macos |
 | 标签 | `vLLM`、`Inference Serving`、`PagedAttention`、`Continuous Batching`、`High Throughput`、`Production`、`OpenAI API`、`Quantization`、`Tensor Parallelism` |
 
-## 参考：完整 SKILL.md
+## 参考：完整的 SKILL.md
 
 :::info
-以下是 Hermes 在触发此技能时加载的完整技能定义。当技能处于激活状态时，这就是智能体看到的指令内容。
+以下是 Hermes 在此技能被触发时加载的完整技能定义。这就是该技能激活时智能体所看到的指令内容。
 :::
 
 # vLLM - 高性能 LLM 服务
 
 ## 何时使用
 
-在部署生产级 LLM API、优化推理延迟/吞吐量，或在 GPU 内存有限的情况下服务模型时使用。支持 OpenAI 兼容端点、量化（GPTQ/AWQ/FP8）以及张量并行。
+当你需要部署生产级 LLM API、优化推理延迟/吞吐量，或在 GPU 显存有限的情况下服务模型时使用。支持 OpenAI 兼容端点、量化（GPTQ/AWQ/FP8）以及张量并行。
 
 ## 快速开始
 
-vLLM 通过 PagedAttention（基于块的 KV 缓存）和持续批处理（混合 prefill/decode 请求），实现了比标准 transformers 高 24 倍的吞吐量。
+vLLM 通过 PagedAttention（基于块的 KV 缓存）和连续批处理（混合 prefill/decode 请求），实现比标准 transformers 高 24 倍的吞吐量。
 
 **安装**：
 ```bash
@@ -74,12 +74,12 @@ print(client.chat.completions.create(
 
 ### 工作流 1：生产 API 部署
 
-复制此检查清单并跟踪进度：
+复制此清单并跟踪进度：
 
 ```
 部署进度：
 - [ ] 第 1 步：配置服务器设置
-- [ ] 第 2 步：使用受限流量测试
+- [ ] 第 2 步：以受限流量进行测试
 - [ ] 第 3 步：启用监控
 - [ ] 第 4 步：部署到生产环境
 - [ ] 第 5 步：验证性能指标
@@ -87,24 +87,24 @@ print(client.chat.completions.create(
 
 **第 1 步：配置服务器设置**
 
-根据模型规模选择配置：
+根据你的模型规模选择配置：
 
 ```bash
-# 单 GPU 上的 7B-13B 模型
+# 适用于单 GPU 上的 7B-13B 模型
 vllm serve meta-llama/Meta-Llama-3-8B-Instruct \
   --gpu-memory-utilization 0.9 \
   --max-model-len 8192 \
   --port 8000
 
-# 使用张量并行的 30B-70B 模型
+# 适用于使用张量并行的 30B-70B 模型
 vllm serve meta-llama/Meta-Llama-3-70B-Instruct \
   --tensor-parallel-size 4 \
   --gpu-memory-utilization 0.9 \
   --quantization awq \
   --port 8000
 
-# 带缓存的生产环境（Prometheus 指标会自动
-# 暴露在 API 端口的 /metrics 路径）
+# 适用于带缓存的生产环境（Prometheus 指标会自动暴露
+# 在 API 端口上的 /metrics 处）
 vllm serve meta-llama/Meta-Llama-3-8B-Instruct \
   --gpu-memory-utilization 0.9 \
   --enable-prefix-caching \
@@ -112,23 +112,23 @@ vllm serve meta-llama/Meta-Llama-3-8B-Instruct \
   --host 0.0.0.0
 ```
 
-**第 2 步：使用受限流量测试**
+**第 2 步：以受限流量进行测试**
 
-在生产环境前运行负载测试：
+在生产前运行负载测试：
 
 ```bash
 # 安装负载测试工具
 pip install locust
 
-# 创建 test_load.py 并写入示例请求
+# 创建 test_load.py 文件，包含示例请求
 # 运行：locust -f test_load.py --host http://localhost:8000
 ```
 
-验证 TTFT（首 token 时间）&lt; 500ms，且吞吐量 > 100 req/sec。
+验证 TTFT（首 token 时间）&lt; 500ms 且吞吐量 > 100 req/sec。
 
 **第 3 步：启用监控**
 
-vLLM 在 API 端口（默认 8000）的 `/metrics` 路径暴露 Prometheus 指标：
+vLLM 在 API 端口（默认为 8000）的 `/metrics` 处暴露 Prometheus 指标：
 
 ```bash
 curl http://localhost:8000/metrics | grep vllm
@@ -136,12 +136,12 @@ curl http://localhost:8000/metrics | grep vllm
 
 需监控的关键指标：
 - `vllm:time_to_first_token_seconds` - 延迟
-- `vllm:num_requests_running` - 活跃请求数
+- `vllm:num_requests_running` - 活动请求数
 - `vllm:gpu_cache_usage_perc` - KV 缓存利用率
 
 **第 4 步：部署到生产环境**
 
-使用 Docker 进行一致性部署：
+使用 Docker 实现一致部署：
 
 ```bash
 # 在 Docker 中运行 vLLM
@@ -160,14 +160,14 @@ docker run --gpus all -p 8000:8000 \
 - GPU 利用率 > 80%
 - 日志中无 OOM 错误
 
-### 工作流 2：离线批处理推理
+### 工作流 2：离线批量推理
 
-用于处理大型数据集，无需服务器开销。
+用于在无服务器开销的情况下处理大规模数据集。
 
-复制此检查清单：
+复制此清单：
 
 ```
-批处理：
+批量处理：
 - [ ] 第 1 步：准备输入数据
 - [ ] 第 2 步：配置 LLM 引擎
 - [ ] 第 3 步：运行批量推理
@@ -213,8 +213,8 @@ vLLM 会自动批处理请求以提高效率：
 # 在一次调用中处理所有提示词
 outputs = llm.generate(prompts, sampling)
 
-# vLLM 内部处理批处理
-# 无需手动分块提示词
+# vLLM 在内部处理批处理
+# 无需手动对提示词进行分块
 ```
 
 **第 4 步：处理结果**
@@ -242,19 +242,19 @@ print(f"Processed {len(results)} prompts")
 
 ### 工作流 3：量化模型服务
 
-在有限的 GPU 内存中运行大模型。
+在有限的 GPU 显存中容纳大模型。
 
 ```
 量化设置：
 - [ ] 第 1 步：选择量化方法
 - [ ] 第 2 步：查找或创建量化模型
 - [ ] 第 3 步：使用量化标志启动
-- [ ] 第 4 步：验证准确度
+- [ ] 第 4 步：验证准确性
 ```
 
 **第 1 步：选择量化方法**
 
-- **AWQ**：最适合 70B 模型，精度损失极小
+- **AWQ**：最适合 70B 模型，精度损失最小
 - **GPTQ**：模型支持广泛，压缩效果好
 - **FP8**：在 H100 GPU 上速度最快
 
@@ -264,7 +264,7 @@ print(f"Processed {len(results)} prompts")
 
 ```bash
 # 搜索 AWQ 模型
-# 例如：TheBloke/Llama-2-70B-AWQ
+# 示例：TheBloke/Llama-2-70B-AWQ
 ```
 
 **第 3 步：使用量化标志启动**
@@ -276,38 +276,38 @@ vllm serve TheBloke/Llama-2-70B-AWQ \
   --tensor-parallel-size 1 \
   --gpu-memory-utilization 0.95
 
-# 结果：约 40GB 显存中运行 70B 模型
+# 结果：70B 模型运行在约 40GB 显存中
 ```
 
-**第 4 步：验证准确度**
+**第 4 步：验证准确性**
 
-测试输出是否达到预期质量：
+测试输出是否符合预期质量：
 
 ```python
-# 比较量化与非量化响应
-# 验证特定任务性能未发生变化
+# 对比量化与非量化响应
+# 验证任务特定性能保持不变
 ```
 
 ## 何时使用 vs 替代方案
 
-**在以下情况使用 vLLM：**
-- 部署生产级 LLM API（100+ req/sec）
+**在以下情况下使用 vLLM：**
+- 部署生产 LLM API（100+ req/sec）
 - 服务 OpenAI 兼容端点
-- GPU 内存有限但需要大模型
+- GPU 显存有限但需要大模型
 - 多用户应用（聊天机器人、助手）
-- 需要低延迟高吞吐量
+- 需要高吞吐量下的低延迟
 
-**改用以下替代方案：**
+**改为使用替代方案：**
 - **llama.cpp**：CPU/边缘推理，单用户
 - **HuggingFace transformers**：研究、原型设计、一次性生成
-- **TensorRT-LLM**：仅限 NVIDIA，需要极致性能
+- **TensorRT-LLM**：仅限 NVIDIA，需要绝对最大性能
 - **Text-Generation-Inference**：已在 HuggingFace 生态系统中
 
 ## 常见问题
 
-**问题：模型加载时内存不足**
+**问题：模型加载时显存不足**
 
-降低内存占用：
+降低内存使用：
 ```bash
 vllm serve MODEL \
   --gpu-memory-utilization 0.7 \
@@ -321,12 +321,12 @@ vllm serve MODEL --quantization awq
 
 **问题：首 token 缓慢（TTFT > 1 秒）**
 
-为重复提示词启用前缀缓存：
+对重复提示词启用前缀缓存：
 ```bash
 vllm serve MODEL --enable-prefix-caching
 ```
 
-对于长提示词，启用分块 prefill：
+对于长提示词，启用分块预填充：
 ```bash
 vllm serve MODEL --enable-chunked-prefill
 ```
@@ -345,17 +345,17 @@ vllm serve MODEL --trust-remote-code
 vllm serve MODEL --max-num-seqs 512
 ```
 
-使用 `nvidia-smi` 检查 GPU 利用率 - 应 >80%。
+使用 `nvidia-smi` 检查 GPU 利用率 - 应 > 80%。
 
 **问题：推理比预期慢**
 
-验证张量并行使用的是 2 的幂次数量的 GPU：
+确认张量并行使用 2 的幂次方数量的 GPU：
 ```bash
 vllm serve MODEL --tensor-parallel-size 4  # 而非 3
 ```
 
-启用投机解码以加快生成（以 JSON 传入配置；
-`--speculative-model` 已移除，改用 `--speculative-config`）：
+启用投机解码以加速生成（以 JSON 格式传递配置；
+`--speculative-model` 已被弃用，改用 `--speculative-config`）：
 ```bash
 vllm serve MODEL \
   --speculative-config '{"model": "DRAFT_MODEL", "num_speculative_tokens": 5, "method": "draft_model"}'
@@ -365,19 +365,19 @@ vllm serve MODEL \
 
 **服务器部署模式**：参见 [references/server-deployment.md](https://github.com/NousResearch/hermes-agent/blob/main/optional-skills/mlops\inference\serving-llms-vllm/references/server-deployment.md)，了解 Docker、Kubernetes 和负载均衡配置。
 
-**性能优化**：参见 [references/optimization.md](https://github.com/NousResearch/hermes-agent/blob/main/optional-skills/mlops\inference\serving-llms-vllm/references/optimization.md)，了解 PagedAttention 调优、持续批处理细节和基准测试结果。
+**性能优化**：参见 [references/optimization.md](https://github.com/NousResearch/hermes-agent/blob/main/optional-skills/mlops\inference\serving-llms-vllm/references/optimization.md)，了解 PagedAttention 调优、连续批处理细节和基准测试结果。
 
-**量化指南**：参见 [references/quantization.md](https://github.com/NousResearch/hermes-agent/blob/main/optional-skills/mlops\inference\serving-llms-vllm/references/quantization.md)，了解 AWQ/GPTQ/FP8 设置、模型准备和准确度对比。
+**量化指南**：参见 [references/quantization.md](https://github.com/NousResearch/hermes-agent/blob/main/optional-skills/mlops\inference\serving-llms-vllm/references/quantization.md)，了解 AWQ/GPTQ/FP8 设置、模型准备和准确性对比。
 
-**故障排查**：参见 [references/troubleshooting.md](https://github.com/NousResearch/hermes-agent/blob/main/optional-skills/mlops\inference\serving-llms-vllm/references/troubleshooting.md)，了解详细错误信息、调试步骤和性能诊断。
+**故障排除**：参见 [references/troubleshooting.md](https://github.com/NousResearch/hermes-agent/blob/main/optional-skills/mlops\inference\serving-llms-vllm/references/troubleshooting.md)，了解详细错误消息、调试步骤和性能诊断。
 
-## 硬件需求
+## 硬件要求
 
 - **小型模型（7B-13B）**：1x A10（24GB）或 A100（40GB）
-- **中型模型（30B-40B）**：2x A100（40GB），配合张量并行
+- **中型模型（30B-40B）**：2x A100（40GB），使用张量并行
 - **大型模型（70B+）**：4x A100（40GB）或 2x A100（80GB），使用 AWQ/GPTQ
 
-支持平台：NVIDIA（主要）、AMD ROCm、Intel GPU、TPU
+支持的平台：NVIDIA（主要）、AMD ROCm、Intel GPU、TPU
 
 ## 资源
 

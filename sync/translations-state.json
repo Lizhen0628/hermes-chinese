@@ -1,571 +1,571 @@
 {
   "getting-started/platform-support.md": {
     "sha256": "250c36a664d84170cf9240486b920208ef2e7fba1392c445d265b20d01bdf1e1",
-    "updated": "2026-09-15T09:51:47.056Z",
+    "updated": "2026-09-15T10:23:54.193Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/bot-mode.md": {
     "sha256": "1d52d5d63bac1012d9ae2c4ef049db42315b3249badeab5a6ca65c192f8f2129",
-    "updated": "2026-09-15T09:52:24.584Z",
+    "updated": "2026-09-15T10:24:32.877Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/egress/index.md": {
     "sha256": "3faa8af965e5c08cd9dbceca561c4a136ff5f927d4e55eeef84f58d3d6bfe01b",
-    "updated": "2026-09-15T09:53:56.888Z",
+    "updated": "2026-09-15T10:25:43.168Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/desktop.md": {
     "sha256": "b436a029a00f7d3226ff03a439a69e3c80a8db9f904b7af4b9106fd45a65d900",
-    "updated": "2026-09-15T09:53:55.569Z",
+    "updated": "2026-09-15T10:25:41.546Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/egress/iron-proxy.md": {
     "sha256": "c271bb26e018f614a088fe168247547f10d9296c6356a9b91bedf5d59a86461f",
-    "updated": "2026-09-15T09:54:40.123Z",
+    "updated": "2026-09-15T10:26:25.226Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/egress/network-isolation.md": {
     "sha256": "db2ebf9ed6ba31e459856ab83ddc90c4191e56294b40a5ef5295bdfbd8d2b59e",
-    "updated": "2026-09-15T09:54:45.881Z",
+    "updated": "2026-09-15T10:26:30.756Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/features/credential-vault.md": {
     "sha256": "8e88a8faaed290ac961eb87b3bb55c79695076834c3ed11387340226f759cd5a",
-    "updated": "2026-09-15T09:54:51.678Z",
+    "updated": "2026-09-15T10:26:36.717Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/features/document-extraction.md": {
     "sha256": "ccb837cc5dc6363a7f37ce44197570cc0e19b4538c6e794b840a7307b2b24d17",
-    "updated": "2026-09-15T09:54:55.944Z",
+    "updated": "2026-09-15T10:26:40.993Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/features/heartbeat.md": {
     "sha256": "75b21c3a5540659bd781a0210824fc6e7475442b9ad0a2acc9dd7afad806de5f",
-    "updated": "2026-09-15T09:55:01.113Z",
+    "updated": "2026-09-15T10:26:46.704Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/features/kanban-multi-gateway.md": {
     "sha256": "8b7d2eb1fbebbca28f416a730eda5082a3f24df121892e7953437baeaf650aab",
-    "updated": "2026-09-15T09:55:24.565Z",
+    "updated": "2026-09-15T10:26:49.427Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/features/loops.md": {
     "sha256": "d91c1bdb34f0a1e1ffe581ab7fb13acd630b932d3b49f67bcb2fd58081cdca55",
-    "updated": "2026-09-15T09:55:32.497Z",
+    "updated": "2026-09-15T10:26:57.029Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/features/mixture-of-agents.md": {
     "sha256": "9e8f6334036958706f722e33d36102d2e19cc138bceb0c6a8c30617ef6d36c33",
-    "updated": "2026-09-15T09:55:43.277Z",
+    "updated": "2026-09-15T10:27:08.568Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/features/pets.md": {
     "sha256": "d741033344c853a3d765c6c8f59272c5bd317a41fd290bcf3f4abca4921e71d1",
-    "updated": "2026-09-15T09:55:53.828Z",
+    "updated": "2026-09-15T10:27:19.745Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/features/plugin-catalog.md": {
     "sha256": "78701ed429147e812418be8619c27462a70e9f99974f47f03c00905b1324697a",
-    "updated": "2026-09-15T09:56:00.852Z",
+    "updated": "2026-09-15T10:27:27.186Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/features/tool-search.md": {
     "sha256": "1d543fdbe38aeba8bc3b4299334cfb03f29a2638fd3ae4bafc6cee5a487f55ec",
-    "updated": "2026-09-15T09:56:17.083Z",
+    "updated": "2026-09-15T10:27:43.524Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/features/wake-word.md": {
     "sha256": "18e8909af9b9e3df28e342b90b04d5d57b7b16f4c1038cdd6200761ae6bc28db",
-    "updated": "2026-09-15T09:56:33.522Z",
+    "updated": "2026-09-15T10:28:00.069Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/import-from-other-agents.md": {
     "sha256": "5d18d7de005f4c8b3c80c9da3d62bd1d0c7cf8d6b778f4e0b7d943f253054e19",
-    "updated": "2026-09-15T09:56:37.292Z",
+    "updated": "2026-09-15T10:28:07.239Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/local-models.md": {
     "sha256": "9cbb864ed687d81bc2802186e2e6cb0dfe5004a967aa132d2f67ebcd11d736df",
-    "updated": "2026-09-15T09:56:44.545Z",
+    "updated": "2026-09-15T10:28:14.289Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/managed-scope.md": {
     "sha256": "fe11d044d33f2e241dac703bef38bf8c983c6bb0843c7061da95034c7efc8d8f",
-    "updated": "2026-09-15T09:56:50.548Z",
+    "updated": "2026-09-15T10:28:21.033Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/messaging/a2a.md": {
     "sha256": "24a4b8260c03a58e5e7181cb0067a63e045ce5dbe757f0e9bb4434d7efd3ea68",
-    "updated": "2026-09-15T09:56:57.928Z",
+    "updated": "2026-09-15T10:28:28.193Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/messaging/buzz.md": {
     "sha256": "6bc1247836a78816d1fd00cb6e20c25eeb8d620165349c0fc857ef51e5d20254",
-    "updated": "2026-09-15T09:57:08.230Z",
+    "updated": "2026-09-15T10:28:39.244Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/messaging/irc.md": {
     "sha256": "daf61d9e990755fd4169d5c51c83c80d404372107b0447423de8ca7733dbecaa",
-    "updated": "2026-09-15T09:57:12.785Z",
+    "updated": "2026-09-15T10:28:43.993Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/messaging/photon.md": {
     "sha256": "ec17eca748af33dadf68851e5806942bec49bafeefba280a2319388cde19e20e",
-    "updated": "2026-09-15T09:57:22.372Z",
+    "updated": "2026-09-15T10:28:53.720Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/messaging/raft.md": {
     "sha256": "98a22c82114b7e2e287498c72672757118e17859f52b251e8d36ccc365e70739",
-    "updated": "2026-09-15T09:57:25.747Z",
+    "updated": "2026-09-15T10:28:56.984Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/messaging/relay.md": {
     "sha256": "0bc54c830174f7ab48f617be7118e7738121afa645041624440e070725fa92da",
-    "updated": "2026-09-15T09:57:36.423Z",
+    "updated": "2026-09-15T10:29:08.489Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/messaging/whatsapp-cloud.md": {
     "sha256": "6f76503b1236ce1ff51329c3ac6051b159d7f34d50b150e196c7444ffbc0e5f4",
-    "updated": "2026-09-15T09:58:27.611Z",
+    "updated": "2026-09-15T10:29:34.287Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/multi-connection-desktop.md": {
     "sha256": "7d947932aec1ecd9af68940a72a5faa2bec05f6a46d8352c38c4ab82e34b466b",
-    "updated": "2026-09-15T09:58:51.171Z",
+    "updated": "2026-09-15T10:29:55.714Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/multi-profile-gateways.md": {
     "sha256": "ffdcc82a3673dab810afe91c5d938052286ba310299a126994421e843e329e83",
-    "updated": "2026-09-15T09:59:44.455Z",
+    "updated": "2026-09-15T10:31:52.719Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/secrets/command.md": {
     "sha256": "a0c1b7b61780ddcdb5f189e2b1c7e3c78760ba491d46f4742a7d219f15b9377f",
-    "updated": "2026-09-15T09:59:48.695Z",
+    "updated": "2026-09-15T10:31:56.727Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/secrets/onepassword.md": {
     "sha256": "e78c5977fd2e592ed19617436f82e6143f314281f2fbe5f4376f76bc414e5452",
-    "updated": "2026-09-15T09:59:58.825Z",
+    "updated": "2026-09-15T10:32:07.162Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-computer-use.md": {
     "sha256": "bb78a75790f94f36e21bb00a2b9a5cd8bb13a3b38430557a56abf3b95fcd7c7e",
-    "updated": "2026-09-15T10:00:16.320Z",
+    "updated": "2026-09-15T10:32:25.825Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-merge-reconciler.md": {
     "sha256": "6b05969e04632b16d9ca01bbf5cf7c1d30332a152c6c56cdfe1b2ecb38df489e",
-    "updated": "2026-09-15T10:00:24.882Z",
+    "updated": "2026-09-15T10:32:34.030Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/devops/devops-sdlc-review.md": {
     "sha256": "17e100e8631beea2ac27f7ee77ab4e8c850f69474dad4e2846b4e9ad9aed0e7e",
-    "updated": "2026-09-15T10:00:33.925Z",
+    "updated": "2026-09-15T10:32:42.701Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/email/email-email-inbox-triage.md": {
     "sha256": "f4b8333066e749f262b73304420be7c7845b2d63c54848fc7fadaf12db8fb28e",
-    "updated": "2026-09-15T10:00:38.963Z",
+    "updated": "2026-09-15T10:32:48.266Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/github/github-github-issue-to-pr.md": {
     "sha256": "b3a793bfecde1ac24b6379b431477295117e1d0b5a913b1da2f92b3e130678c4",
-    "updated": "2026-09-15T10:00:46.673Z",
+    "updated": "2026-09-15T10:32:56.099Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/productivity/productivity-box.md": {
     "sha256": "2408bba0a59d4182566f5a8069e60eba29c918c06e8d2e3efb44d08c32e0290c",
-    "updated": "2026-09-15T10:01:01.276Z",
+    "updated": "2026-09-15T10:33:10.151Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/productivity/productivity-document-to-action-items.md": {
     "sha256": "ac89d45d8acc2477c7067968d3373bc09310c9f69a9a8eb03648376cd8d2053e",
-    "updated": "2026-09-15T10:01:06.265Z",
+    "updated": "2026-09-15T10:33:15.127Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/productivity/productivity-docx.md": {
     "sha256": "bb0421999f0f59667a8e1d9773164e9303a0bf8c58538515edccf025d6753882",
-    "updated": "2026-09-15T10:01:17.025Z",
+    "updated": "2026-09-15T10:33:26.159Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/productivity/productivity-meeting-action-items.md": {
     "sha256": "84c13ad0f3f8bae72c0bb3539d682b7c8737965e0994dc6c5be746a3677da0c0",
-    "updated": "2026-09-15T10:01:22.563Z",
+    "updated": "2026-09-15T10:33:30.239Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/productivity/productivity-pdf.md": {
     "sha256": "aabb21b1e57ac62af20c789d8089235b943610cc018530e29b353c6ad5a0a5fb",
-    "updated": "2026-09-15T10:01:38.186Z",
+    "updated": "2026-09-15T10:33:44.538Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/productivity/productivity-product-price-monitor.md": {
     "sha256": "a18675d6eebcd51afea6ea0f31d0b025435d53546b10930a5dc896bcce0dfd20",
-    "updated": "2026-09-15T10:01:44.376Z",
+    "updated": "2026-09-15T10:33:50.384Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/productivity/productivity-session-librarian.md": {
     "sha256": "bd63aa1dd039c09c291c36e90f5138b59a279294189da9c7c68dcfeab8f38ed8",
-    "updated": "2026-09-15T10:01:50.706Z",
+    "updated": "2026-09-15T10:33:56.078Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/productivity/productivity-weekly-review-planning.md": {
     "sha256": "ff791148f1aa4b027cc613f9dba7180b975f259387482ca745c094fd986425e6",
-    "updated": "2026-09-15T10:01:56.382Z",
+    "updated": "2026-09-15T10:34:01.990Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/productivity/productivity-xlsx.md": {
     "sha256": "532fa2b2e044ede0fb58909ae5cb61ef6022cf111be57634658ee8269648fa6a",
-    "updated": "2026-09-15T10:02:06.148Z",
+    "updated": "2026-09-15T10:34:12.368Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/research/research-blocked-page-recovery.md": {
     "sha256": "d18c6d919701158b8936176d62bdf2974aff4841485118868cebe595de331ca2",
-    "updated": "2026-09-15T10:02:13.106Z",
+    "updated": "2026-09-15T10:34:19.109Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/research/research-competitor-news-monitor.md": {
     "sha256": "96baeb61354a290728fe088597eb1bdda48c7e396a3fb97b68f4c7fa696518da",
-    "updated": "2026-09-15T10:02:18.937Z",
+    "updated": "2026-09-15T10:34:24.760Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/research/research-grounded-citations.md": {
     "sha256": "5af72f68f7a9c8820853845ebda519d4d95c3c3b9963d4c0dcbfde93e350791c",
-    "updated": "2026-09-15T10:02:34.718Z",
+    "updated": "2026-09-15T10:34:41.061Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/software-development/software-development-codebase-inspection.md": {
     "sha256": "c22f762524e073d4554f1060ef44ae84a14075ff79e7f782bc62733bb8ffbfcc",
-    "updated": "2026-09-15T10:02:39.372Z",
+    "updated": "2026-09-15T10:34:45.545Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/software-development/software-development-github.md": {
     "sha256": "90d2f91e85e4c75dc2ea13393f0c24ea996013966625e9aef283b31d4fe88589",
-    "updated": "2026-09-15T10:02:43.286Z",
+    "updated": "2026-09-15T10:34:49.593Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/software-development/software-development-inspecting-hermes-desktop-dom.md": {
     "sha256": "262a6a1694fadecba74ae69dcf82921251104134567cc1080dadb02d10d5d672",
-    "updated": "2026-09-15T10:02:58.325Z",
+    "updated": "2026-09-15T10:34:57.183Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/software-development/software-development-simplify-code.md": {
     "sha256": "f875aa3a00188a41183ffbb30b465678a75a25add9b7324756765b7eeb12ac64",
-    "updated": "2026-09-15T10:03:15.424Z",
+    "updated": "2026-09-15T10:35:13.424Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/bundled/web/web-blocked-page-recovery.md": {
     "sha256": "956cce6d39a2dd41350b969ad84d7d35ad357623ad75e1559dde0a3364b7aeec",
-    "updated": "2026-09-15T10:03:29.379Z",
+    "updated": "2026-09-15T10:35:27.103Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/autonomous-ai-agents/autonomous-ai-agents-antigravity-cli.md": {
     "sha256": "b4c016f7f157289ae808192c17b5a949c9d5420fa036fbb19ddd1e9c5feb673c",
-    "updated": "2026-09-15T10:03:40.020Z",
+    "updated": "2026-09-15T10:35:36.998Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/autonomous-ai-agents/autonomous-ai-agents-dynamic-workflow.md": {
     "sha256": "192fa8224c3a8ad09d896d9fbb4de310fb26f3208779d6fd7b9ae3667562cf6b",
-    "updated": "2026-09-15T10:03:51.918Z",
+    "updated": "2026-09-15T10:35:49.141Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/autonomous-ai-agents/autonomous-ai-agents-grok.md": {
     "sha256": "5bb1aaf738c2e953153c294a2978db26a948a7449012a68d87b34b558bafcc27",
-    "updated": "2026-09-15T10:04:07.171Z",
+    "updated": "2026-09-15T10:36:05.056Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/autonomous-ai-agents/autonomous-ai-agents-openhands.md": {
     "sha256": "084b3922a82dbf61eed6a7216c9cce0d0aeba21dff703e52267d67e3f9a53885",
-    "updated": "2026-09-15T10:04:16.498Z",
+    "updated": "2026-09-15T10:36:14.216Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-ai-presenter-video.md": {
     "sha256": "a0e2a3c535b9812cb3f1ffa136d5d9c4504edd4cf28cb5c0bec149b20c625a10",
-    "updated": "2026-09-15T10:04:27.308Z",
+    "updated": "2026-09-15T10:36:24.021Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-archify.md": {
     "sha256": "a46ea34303baa10887bda0675934f3365ae0f635f0f25ed5722aaaf9fcd126d9",
-    "updated": "2026-09-15T10:04:30.968Z",
+    "updated": "2026-09-15T10:36:27.824Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-ascii-art.md": {
     "sha256": "43a3b6c49937e66791e36a60c2f6596a7903b3d798ca9837126fdc4c0ec3544a",
-    "updated": "2026-09-15T10:04:42.145Z",
+    "updated": "2026-09-15T10:36:39.052Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-baoyu-comic.md": {
     "sha256": "118ed1cf53ae5f5a5c52beeec5e9e010a09656aa27c9c147e4dfb57fad9bcb60",
-    "updated": "2026-09-15T10:05:21.826Z",
+    "updated": "2026-09-15T10:37:19.498Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-creative-ideation.md": {
     "sha256": "9a029049632d340106e5d3cc850eafdaa1c329e48e42eb9d98c8bb2cdcf99fe5",
-    "updated": "2026-09-15T10:06:38.097Z",
+    "updated": "2026-09-15T10:38:21.061Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-draw-your-font.md": {
     "sha256": "1997edcafdd2a44c71e214bdeeb49d4908372ca2a5881084c55b152bfd3cf736",
-    "updated": "2026-09-15T10:06:55.786Z",
+    "updated": "2026-09-15T10:38:30.456Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-dream-loop.md": {
     "sha256": "21b7158c9c1bfb24a6707e750371dbae28bfaf08b028e2957b94371c41efca60",
-    "updated": "2026-09-15T10:07:13.807Z",
+    "updated": "2026-09-15T10:38:48.531Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-excalidraw.md": {
     "sha256": "2e1218d9ac50b02c11777a292d34d89c0e9afc4dd805ea7c55c3bb1084c8da86",
-    "updated": "2026-09-15T10:07:29.561Z",
+    "updated": "2026-09-15T10:38:56.281Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-impeccable.md": {
     "sha256": "0677da87d30c0ac120bad4bed0bf589256d5681a2bb2695d55f6415993053c21",
-    "updated": "2026-09-15T10:07:32.665Z",
+    "updated": "2026-09-15T10:38:59.639Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-mono-color.md": {
     "sha256": "d3c0f945e236b6db44b82f9d931ee6a0cc07205718f69abea34bdd85b828b40e",
-    "updated": "2026-09-15T10:07:46.622Z",
+    "updated": "2026-09-15T10:39:13.773Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-pixel-art.md": {
     "sha256": "c7c6e8ad00e39d5a6ae6caf5cb7144367d108cff54c826c400dd1ab99d389483",
-    "updated": "2026-09-15T10:08:04.533Z",
+    "updated": "2026-09-15T10:39:22.329Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-pretext.md": {
     "sha256": "b3e92ec6c7265cf1a38485e7a40936536edef703a2298c5626e147738784088a",
-    "updated": "2026-09-15T10:08:21.869Z",
+    "updated": "2026-09-15T10:39:39.345Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-simple-english.md": {
     "sha256": "006117445d25c2fb0cd6d2c54729ee8641243ba539b79adefcf0872c784482be",
-    "updated": "2026-09-15T10:08:47.471Z",
+    "updated": "2026-09-15T10:40:03.986Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-social-media-content-calendar.md": {
     "sha256": "c662d7455ed98366c0fb0dd30d514392519222382fc7ab3ec5d76dee095c78dd",
-    "updated": "2026-09-15T10:09:39.765Z",
+    "updated": "2026-09-15T10:40:55.349Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-system-atlas.md": {
     "sha256": "fb5673df4aee7c925e657798bb6d59cacc552fc0d915b4210ba82c56da238974",
-    "updated": "2026-09-15T10:09:49.604Z",
+    "updated": "2026-09-15T10:41:06.175Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-tldraw-offline.md": {
     "sha256": "4a1974e66c13f0aee028331134b820b657737a8aba19a2c783d946bf96e2b493",
-    "updated": "2026-09-15T10:10:07.181Z",
+    "updated": "2026-09-15T10:41:22.977Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/creative/creative-unreal-mcp.md": {
     "sha256": "aee9f39f0dda73d838dda6b5f99c43ec2f4efa0b0716cad2e5dae8dba17a83a0",
-    "updated": "2026-09-15T10:10:39.150Z",
+    "updated": "2026-09-15T10:41:54.290Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/devops/devops-actual-setup.md": {
     "sha256": "590215986a4ff95e80d460cc8c52c0a16c8e7481d17266cd42a4032b090eaa12",
-    "updated": "2026-09-15T10:10:46.874Z",
+    "updated": "2026-09-15T10:42:01.605Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/devops/devops-setup-wizard-generator.md": {
     "sha256": "c1d7c4d0835c7f4a2f910bfcd50df6ae216a4fcaa172b5c7559ae64e8ed7512a",
-    "updated": "2026-09-15T10:11:19.458Z",
+    "updated": "2026-09-15T10:42:36.155Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/gaming/gaming-minecraft-modpack-server.md": {
     "sha256": "aa4986070899a586aa4be59b8726d18ebae312fcb7e3aec09beb12f8856442c4",
-    "updated": "2026-09-15T10:11:34.553Z",
+    "updated": "2026-09-15T10:42:45.015Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/gaming/gaming-pokemon-player.md": {
     "sha256": "1709f75928cddd16a95a3f9a742f28a870b2702c7660bce61a5ccf90769cb436",
-    "updated": "2026-09-15T10:11:44.528Z",
+    "updated": "2026-09-15T10:42:54.967Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/mcp/mcp-mcp-oauth-remote-gateway.md": {
     "sha256": "5e04be4264cb9215404f5a7be3e1a9b63fb67ad836f83be15050d2053278723c",
-    "updated": "2026-09-15T10:12:12.762Z",
+    "updated": "2026-09-15T10:43:22.903Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/mlops/mlops-evaluation-evaluating-llms-harness.md": {
     "sha256": "27a6aa8509ad810519d1982817c5f921e0e9203da8aff3513866f5eee250d948",
-    "updated": "2026-09-15T10:12:26.113Z",
+    "updated": "2026-09-15T10:43:36.466Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/mlops/mlops-evaluation-weights-and-biases.md": {
     "sha256": "cee4db3d39279b4539fcde26dc008e7371d7268a10d88493d79cff2c1670866d",
-    "updated": "2026-09-15T10:12:39.442Z",
+    "updated": "2026-09-15T10:43:49.452Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/mlops/mlops-inference-llama-cpp.md": {
     "sha256": "8e15e3c17fcfa6bf9e1ab3e2270877baae06c0f635bcd631634d8256f78e1354",
-    "updated": "2026-09-15T10:12:49.052Z",
+    "updated": "2026-09-15T10:43:58.429Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/mlops/mlops-inference-serving-llms-vllm.md": {
     "sha256": "3936773b80d36f858f76bef46f0d302c0e3ebace4a261623ef52b4ba33a519c1",
-    "updated": "2026-09-15T10:12:58.449Z",
+    "updated": "2026-09-15T10:44:17.125Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/mlops/mlops-models-huggingface-hub.md": {
     "sha256": "1362aff2e6bfb7ec1af1240b00d2f922b03db0d844b07a50fb75ff096981dfea",
-    "updated": "2026-09-15T10:13:03.068Z",
+    "updated": "2026-09-15T10:44:21.749Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/mlops/mlops-obliteratus.md": {
     "sha256": "0274876b778d0aaf02c4685288d33316e5ccd18c93181dbc6889240a739b263d",
-    "updated": "2026-09-15T10:13:20.467Z",
+    "updated": "2026-09-15T10:44:37.767Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/mlops/mlops-research-dspy.md": {
     "sha256": "fe0616894cdce3e86df1dc5661378980d1aea0faed4a7b9eb64bebf477d24406",
-    "updated": "2026-09-15T10:13:49.846Z",
+    "updated": "2026-09-15T10:44:51.913Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/payments/payments-mpp-agent.md": {
     "sha256": "44d49a01990623a6b3e53f13324a15e0c7e95628410924252b586b45f31db2eb",
-    "updated": "2026-09-15T10:13:56.257Z",
+    "updated": "2026-09-15T10:44:57.921Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/payments/payments-stripe-link-cli.md": {
     "sha256": "7590ba979413120a4777426b827909e13d080a74edebc1890180c10b161a9761",
-    "updated": "2026-09-15T10:14:03.625Z",
+    "updated": "2026-09-15T10:45:05.330Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/payments/payments-stripe-projects.md": {
     "sha256": "28e254d0180875b7074450b568ac09701fc33a1a44d910581943cb05933da84a",
-    "updated": "2026-09-15T10:14:08.918Z",
+    "updated": "2026-09-15T10:45:11.166Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/productivity/productivity-decision-questionnaire.md": {
     "sha256": "361f7955ba151b114bf7a939887f8b7b0d68cb322d337d7ebf2b3825066458bc",
-    "updated": "2026-09-15T10:14:15.189Z",
+    "updated": "2026-09-15T10:45:16.796Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/productivity/productivity-property-listings.md": {
     "sha256": "3e6501172915f869cfc1079794384299d72661fbf34827616f35e60c6d733a0e",
-    "updated": "2026-09-15T10:14:20.650Z",
+    "updated": "2026-09-15T10:45:22.609Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/research/research-blogwatcher.md": {
     "sha256": "23c238bf20408cfac240bfd0e72434803100d8f7a37f376be4722021877a12b3",
-    "updated": "2026-09-15T10:14:27.359Z",
+    "updated": "2026-09-15T10:45:29.254Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/research/research-pinecone-research.md": {
     "sha256": "f2c0556cc52c765e9cf4984e3f584a8a857850369ebb9b2fd714c4c2bd075f20",
-    "updated": "2026-09-15T10:14:31.621Z",
+    "updated": "2026-09-15T10:45:32.945Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/research/research-rss-feeds.md": {
     "sha256": "d2d94fad79ec63f43a44ba319c890d5718af1a8b4989513bb4da13bfa6e0cc60",
-    "updated": "2026-09-15T10:17:11.378Z",
+    "updated": "2026-09-15T10:48:05.979Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/security/security-godmode.md": {
     "sha256": "13ef4ada05fdc306b62a1ed5fe321b6c4dba4ff143cbb347b4db4b78d1c77e16",
-    "updated": "2026-09-15T10:17:35.149Z",
+    "updated": "2026-09-15T10:48:28.261Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
   "user-guide/skills/optional/security/security-unbroker.md": {
     "sha256": "0c0ad4366c1fcb457e420e2b74f9527a363176c7db00f055c3df6a4944abf7f1",
-    "updated": "2026-09-15T10:18:05.638Z",
+    "updated": "2026-09-15T10:48:58.139Z",
     "status": "llm",
     "model": "deepseek-chat"
   }

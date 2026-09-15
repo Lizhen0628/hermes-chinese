@@ -1,46 +1,46 @@
 ---
-title: "Weights And Biases — W&B：记录机器学习实验、超参数扫描、模型注册表、仪表盘"
+title: "Weights And Biases — W&B：记录机器学习实验、扫描、模型注册表、仪表盘"
 sidebar_label: "Weights And Biases"
-description: "W&B：记录机器学习实验、超参数扫描、模型注册表、仪表盘"
+description: "W&B：记录机器学习实验、扫描、模型注册表、仪表盘"
 ---
 
-{/* 本页面由 website/scripts/generate-skill-docs.py 根据技能的 SKILL.md 自动生成。请编辑源 SKILL.md，而非此页面。 */}
+{/* 本页面由 website/scripts/generate-skill-docs.py 从技能的 SKILL.md 自动生成。请编辑源 SKILL.md，而非本页面。 */}
 
 # Weights And Biases
 
-W&B：记录机器学习实验、超参数扫描、模型注册表、仪表盘。
+W&B：记录机器学习实验、扫描、模型注册表、仪表盘。
 
 ## 技能元数据
 
 | | |
 |---|---|
-| 来源 | 可选 — 使用 `hermes skills install official/mlops/weights-and-biases` 安装 |
-| 路径 | `optional-skills/mlops\evaluation\weights-and-biases` |
-| 版本 | `1.0.1` |
-| 作者 | Orchestra Research |
-| 许可证 | MIT |
-| 依赖 | `wandb` |
-| 平台 | linux、macos、windows |
-| 标签 | `MLOps`、`Weights And Biases`、`WandB`、`Experiment Tracking`、`Hyperparameter Tuning`、`Model Registry`、`Collaboration`、`Real-Time Visualization`、`PyTorch`、`TensorFlow`、`HuggingFace` |
+| Source | Optional — 使用 `hermes skills install official/mlops/weights-and-biases` 安装 |
+| Path | `optional-skills/mlops\evaluation\weights-and-biases` |
+| Version | `1.0.1` |
+| Author | Orchestra Research |
+| License | MIT |
+| Dependencies | `wandb` |
+| Platforms | linux, macos, windows |
+| Tags | `MLOps`, `Weights And Biases`, `WandB`, `Experiment Tracking`, `Hyperparameter Tuning`, `Model Registry`, `Collaboration`, `Real-Time Visualization`, `PyTorch`, `TensorFlow`, `HuggingFace` |
 
-## 参考：完整 SKILL.md
+## 参考：完整的 SKILL.md
 
 :::info
-以下是此技能被触发时 Hermes 加载的完整技能定义。当技能处于激活状态时，这就是智能体看到的指令内容。
+以下是 Hermes 在此技能被触发时加载的完整技能定义。这就是技能激活时代理所看到的指令内容。
 :::
 
 # Weights & Biases：机器学习实验跟踪与 MLOps
 
 ## 何时使用此技能
 
-当你需要以下功能时，请使用 Weights & Biases（W&B）：
-- **跟踪机器学习实验**，自动记录指标
-- **可视化训练过程**，通过实时仪表盘
-- **对比多次运行**，跨超参数和配置
-- **优化超参数**，通过自动化扫描
-- **管理模型注册表**，具备版本控制和血统追溯
-- **协作开展机器学习项目**，通过团队工作区
-- **跟踪制品**（数据集、模型、代码），具备血统追溯
+当你需要以下功能时，请使用 Weights & Biases (W&B)：
+- **跟踪机器学习实验**：自动记录指标
+- **可视化训练过程**：通过实时仪表盘
+- **比较运行**：跨超参数和配置
+- **优化超参数**：使用自动化扫描
+- **管理模型注册表**：支持版本控制和血缘追踪
+- **协作机器学习项目**：通过团队工作区
+- **跟踪产物**（数据集、模型、代码）：支持血缘追踪
 
 **用户**：200,000+ 机器学习从业者 | **GitHub Stars**：10.5k+ | **集成**：100+
 
@@ -50,7 +50,7 @@ W&B：记录机器学习实验、超参数扫描、模型注册表、仪表盘�
 # 安装 W&B
 pip install wandb
 
-# 登录（创建 API 密钥）
+# 登录（生成 API 密钥）
 wandb login
 
 # 或以编程方式设置 API 密钥
@@ -140,15 +140,15 @@ wandb.finish()
 
 ### 1. 项目与运行
 
-**项目（Project）**：相关实验的集合
-**运行（Run）**：训练脚本的单次执行
+**项目**：相关实验的集合
+**运行**：训练脚本的单次执行
 
 ```python
 # 创建/使用项目
 run = wandb.init(
     project="image-classification",
     name="resnet50-experiment-1",  # 可选的运行名称
-    tags=["baseline", "resnet"],    # 用标签组织
+    tags=["baseline", "resnet"],    # 使用标签进行组织
     notes="First baseline run"      # 添加备注
 )
 
@@ -180,7 +180,7 @@ config = {
 
 wandb.init(project="my-project", config=config)
 
-# 在训练期间访问配置
+# 训练期间访问配置
 lr = wandb.config.learning_rate
 batch_size = wandb.config.batch_size
 ```
@@ -204,7 +204,7 @@ wandb.log({
 # 使用自定义 x 轴记录
 wandb.log({"loss": loss}, step=global_step)
 
-# 记录媒体（图像、音频、视频）
+# 记录媒体文件（图像、音频、视频）
 wandb.log({"examples": [wandb.Image(img) for img in images]})
 
 # 记录直方图
@@ -281,7 +281,7 @@ sweep_id = wandb.sweep(sweep_config, project="my-project")
 
 ```python
 def train():
-    # 初始化 run
+    # 初始化运行
     run = wandb.init()
 
     # 访问扫描参数
@@ -379,7 +379,7 @@ data = load_data(f"{artifact_dir}/train.csv")
 ### 模型注册表
 
 ```python
-# 将模型记录为制品
+# 将模型记录为工件
 model_artifact = wandb.Artifact(
     name='resnet50-model',
     type='model',
@@ -389,7 +389,7 @@ model_artifact = wandb.Artifact(
 model_artifact.add_file('model.pth')
 wandb.log_artifact(model_artifact, aliases=['best', 'production'])
 
-# 关联到模型注册表
+# 链接到模型注册表
 run.link_artifact(model_artifact, 'model-registry/production-models')
 ```
 
@@ -404,7 +404,7 @@ import wandb
 # 初始化 W&B
 wandb.init(project="hf-transformers")
 
-# 带 W&B 的训练参数
+# 使用 W&B 的训练参数
 training_args = TrainingArguments(
     output_dir="./results",
     report_to="wandb",  # 启用 W&B 日志记录
@@ -413,7 +413,7 @@ training_args = TrainingArguments(
     save_steps=500
 )
 
-# Trainer 会自动记录到 W&B
+# Trainer 自动记录到 W&B
 trainer = Trainer(
     model=model,
     args=training_args,
@@ -455,8 +455,8 @@ from wandb.integration.keras import WandbMetricsLogger, WandbModelCheckpoint
 # 初始化
 wandb.init(project="keras-demo")
 
-# 添加回调（一体式的 WandbCallback 已被移除；
-# 请改用 wandb.integration.keras 中专用的回调）
+# 添加回调函数（单体的 WandbCallback 已被移除；
+# 请改用 wandb.integration.keras 中专门的回调函数）
 model.fit(
     x_train, y_train,
     validation_data=(x_val, y_val),
@@ -491,26 +491,26 @@ wandb.log({"conf_mat": wandb.plot.confusion_matrix(
 
 ### 报告
 
-在 W&B UI 中创建可分享的报告：
-- 组合运行、图表与文本
+在 W&B UI 中创建可共享的报告：
+- 组合运行、图表和文本
 - 支持 Markdown
 - 可嵌入的可视化
 - 团队协作
 
 ## 最佳实践
 
-### 1. 用标签与分组进行组织
+### 1. 使用标签和分组进行组织
 
 ```python
 wandb.init(
     project="my-project",
     tags=["baseline", "resnet50", "imagenet"],
-    group="resnet-experiments",  # 将相关的运行分组
-    job_type="train"             # 作业类型
+    group="resnet-experiments",  # 将相关运行分组
+    job_type="train"             # 任务类型
 )
 ```
 
-### 2. 记录所有相关内容
+### 2. 记录所有相关信息
 
 ```python
 # 记录系统指标
@@ -533,17 +533,17 @@ wandb.log({
 ### 3. 使用描述性名称
 
 ```python
-# ✅ 良好：描述性的运行名称
+# ✅ 好：描述性运行名称
 wandb.init(
     project="nlp-classification",
     name="bert-base-lr0.001-bs32-epoch10"
 )
 
-# ❌ 不佳：通用名称
+# ❌ 差：通用名称
 wandb.init(project="nlp", name="run1")
 ```
 
-### 4. 保存重要的制品
+### 4. 保存重要工件
 
 ```python
 # 保存最终模型
@@ -559,7 +559,7 @@ predictions_table = wandb.Table(
 wandb.log({"predictions": predictions_table})
 ```
 
-### 5. 在连接不稳定时使用离线模式
+### 5. 网络不稳定时使用离线模式
 
 ```python
 import os
@@ -576,27 +576,27 @@ wandb.init(project="my-project")
 
 ## 团队协作
 
-### 分享运行
+### 共享运行
 
 ```python
-# 运行可通过 URL 自动分享
+# 运行可通过 URL 自动共享
 run = wandb.init(project="team-project")
-print(f"Share this URL: {run.url}")
+print(f"分享此 URL：{run.url}")
 ```
 
 ### 团队项目
 
-- 在 wandb.ai 创建团队账户
+- 在 wandb.ai 创建团队账号
 - 添加团队成员
 - 设置项目可见性（私有/公开）
-- 使用团队级制品与模型注册表
+- 使用团队级别的工件和模型注册表
 
 ## 定价
 
 - **免费版**：无限公开项目，100GB 存储
-- **学术版**：面向学生/研究者免费
-- **团队版**：每席位每月 $50，私有项目，无限存储
-- **企业版**：定制定价，支持本地部署
+- **学术版**：学生/研究人员免费
+- **团队版**：$50/席位/月，私有项目，无限存储
+- **企业版**：定制价格，支持本地部署
 
 ## 资源
 
@@ -609,5 +609,5 @@ print(f"Share this URL: {run.url}")
 ## 另请参阅
 
 - `references/sweeps.md` - 全面的超参数优化指南
-- `references/artifacts.md` - 数据与模型版本管理的方式
-- `references/integrations.md` - 各框架的具体示例
+- `references/artifacts.md` - 数据和模型版本控制模式
+- `references/integrations.md` - 特定框架的示例

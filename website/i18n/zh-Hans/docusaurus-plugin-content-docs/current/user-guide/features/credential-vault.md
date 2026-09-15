@@ -1,72 +1,72 @@
 ---
 title: "密码与登录"
-description: "智能体替你登录网站、付款、填写地址，全程不会看到密码。"
+description: "智能体替你登录网站、付款和填写地址，却始终看不到密码。"
 ---
 
 # 密码与登录
 
-说一句 **“登录 GitHub”**，智能体就会替你登录。第一次遇到它没有凭据的登录页面时，它会在原地、通过一个掩码提示框向你询问。此后便可畅通无阻。密码在本机加密存储，并直接注入页面；模型永远看不到它们。
+只要说 **“登录 GitHub”**，智能体就会替你登录。第一次遇到它没有登录凭据的登录页面时，它会在那里、在一个隐藏输入的提示框里向你询问。之后就能直接用了。密码在这台机器上加密，并直接注入到页面中；模型永远看不到它们。
 
-无需任何设置。
+无需任何配置。
 
-## 实际使用是什么样
+## 看起来是什么样
 
 **CLI / TUI**
 
 ```
-🔐 Save login for github.com
-   The agent reached a sign-in page with no saved login for this site.
-   Type the email / username you sign in with (shown), then Enter.
+🔐 为 github.com 保存登录凭据
+   智能体遇到了一个登录页面，但此站点没有已保存的登录凭据。
+   输入你登录时使用的邮箱 / 用户名（可见），然后按 Enter。
    ...
-   Now the password (hidden). It is encrypted on this machine, bound to
-   https://github.com, and filled into the page without the model ever seeing it.
+   现在输入密码（隐藏）。它在本机加密，绑定到
+   https://github.com，并被填入页面，模型全程无法看到。
 ```
 
-**Desktop** —— 一张“保存你的 github.com 登录？”卡片，包含一个标识符输入框和一个掩码密码输入框。*保存并登录* 会将其存下并继续；*不保存* 则告诉智能体本轮不要再询问。
+**Desktop** —— 一张“保存你的 github.com 登录凭据？”卡片，带有标识符字段和掩码密码字段。*保存并登录* 会存储它并继续；*不保存* 会告诉智能体本轮不再询问。
 
-在那之后，智能体会列出你已保存的登录项，自行输入标识符，并通过 Hermes 填入密码。它看到的工具结果为 `{filled_fields: 1, origin: "https://github.com"}`；同时密码也会注册到脱敏器中，因此后续读取页面时无法回显它。
+此后，智能体会列出你保存的登录凭据，自己输入标识符，并通过 Hermes 填入密码。它看到的工具结果是 `{filled_fields: 1, origin: "https://github.com"}`；密码也会注册到脱敏器中，这样之后读取页面时也无法把它回显出来。
 
-## 二次验证码
+## 双重验证码
 
-密码之后还需要验证码的网站，处理方式相同：
+在密码之后要求验证码的网站，处理方式也一样：
 
-- **验证器密钥随登录项一同保存**（网站开启 2FA 时显示的“设置密钥”或 `otpauth://` 链接；1Password 和 Bitwarden 中包含 TOTP 随机种子的条目也算）：Hermes 会生成当前验证码并填入。不会询问任何人。可在 **Settings → Passwords & Logins → Add** 或 `hermes vault add` 中添加密钥；该条目会显示 *2FA 自动* 徽章。
-- **发送到你手机或邮箱的验证码**：你的界面会出现一个小提示（“github.com 的验证码”），你输入验证码，Hermes 将其填入页面。验证码同样不会进入对话。
-- **通行密钥、硬件密钥、App 审批**（“在 Duo 中点按批准”）：无需输入任何内容。智能体会告知你在设备上完成，并等待页面继续。
+- **随登录凭据保存的验证器密钥**（即你在启用 2FA 时网站显示的“设置密钥”或 `otpauth://` 链接；包含 TOTP 种子的 1Password 和 Bitwarden 条目也算）：Hermes 生成当前验证码并输入它。无需询问任何人。在 **设置 → 密码与登录 → 添加** 中添加该密钥，或使用 `hermes vault add`；该条目会显示 *2FA auto* 徽标。
+- **发送到你手机或邮箱的验证码**：你的界面中会出现一个小提示（“github.com 的验证码”），你输入验证码，Hermes 会将其填入页面。验证码同样不会进入对话。
+- **通行密钥、硬件密钥、应用批准**（“在 Duo 中点击批准”）：无需输入任何内容。智能体会让你在自己的设备上完成，并等待页面继续。
 
-## 已经在用 1Password 或 Bitwarden？
+## 已经在使用 1Password 或 Bitwarden？
 
-无需开启任何东西。如果 `op` 或 `bw` 命令行工具已安装并登录，Hermes 会自动识别它，其网站登录项便可与本地登录项一同填写。智能体第一次需要其中一个登录项时，会要求你用主密码解锁该管理器（掩码提示框；每会话一次，空闲 30 分钟后过期）。Hermes 通过其非交互通道将主密码交给该管理器的 CLI（在 stdin 上执行 `op signin`，在子进程环境中使用 `bw unlock --passwordenv`），并且只在内存中保留会话令牌。智能体永远看不到主密码、令牌或任何登录项。
+无需启用任何东西。如果 `op` 或 `bw` 命令行工具已安装并已登录，Hermes 会自动识别它，其网站登录凭据就能与本地凭据一样被填入。智能体第一次需要这些登录凭据之一时，会要求你用主密码解锁该管理器（隐藏提示；每个会话一次，闲置 30 分钟）。Hermes 通过管理器的 CLI 的非交互通道把主密码交给它（通过 stdin 执行 `op signin`，在子进程环境中执行 `bw unlock --passwordenv`），并只在内存中保留会话令牌。智能体永远看不到主密码、令牌或任何登录凭据。
 
-不想使用检测到的管理器？运行 `hermes vault sources --disable bitwarden`，或使用 **Settings → Passwords & Logins** 中的开关。
+不想使用检测到的管理器？执行 `hermes vault sources --disable bitwarden`，或使用 **设置 → 密码与登录** 中的开关。
 
-## 付款与填写地址
+## 付款和填写地址
 
-卡片和地址的处理方式与登录项相同：保存一次（**Settings → Passwords & Logins → Add**，或 `hermes vault add`），绑定到结算网站，且仅由智能体在该网站上填写。**每次填入卡片都会先询问你**，使用与危险命令相同的审批提示；拒绝则不会写入任何内容。无头会话（定时任务、Webhook、API 服务器）无法确认，因此会被拒绝，这样即使提示注入到达了结算页面也只会询问，而无法扣款。填写地址无需确认。
+银行卡和地址的工作方式与登录凭据一样：保存一次（**设置 → 密码与登录 → 添加**，或 `hermes vault add`），绑定到结算网站，并且智能体仅在该网站上填入。**每次填写银行卡都会先询问你**，使用与危险命令相同的批准提示；拒绝则什么都不会写入。无头会话（定时任务、webhook、API 服务器）无法确认，会被拒绝，因此一个到达结算页面的提示注入可以请求，但无法花钱。填写地址无需确认。
 
 ## 管理已保存的内容
 
-- **Desktop → Settings → Passwords & Logins**：所有已保存项、检测到的密码管理器及其解锁/锁定、Add、Remove。
+- **Desktop → 设置 → 密码与登录**：所有已保存内容、检测到的密码管理器及解锁/锁定、添加、移除。
 - **CLI**：`hermes vault list`、`hermes vault add`、`hermes vault rm <handle>`、`hermes vault sources`。
 
-条目以加密形式存于 `~/.hermes/vault/` 下（Fernet 密钥 + vault 文件，二者权限均为 `0600`），按配置档隔离。标签、站点来源和登录标识符是可见的元数据；密码和卡片值永不离开 vault，只进页面。
+条目加密存储在 `~/.hermes/vault/` 下（Fernet 密钥 + vault 文件，权限均为 `0600`），作用域为当前配置档。标签、站点来源和登录标识符是可见的元数据；密码和银行卡信息永远不会离开 vault，除非填入页面。
 
 ## 无头会话
 
-定时任务、Webhook、API 服务器及 `hermes chat -q` 无人应答提示。已保存的本地登录项在这些场景下仍可使用；已锁定的密码管理器会报告 `unavailable_in_this_session`，缺失的登录项则报告 `prompt_unavailable`。请先在交互式会话中解锁或保存，或给 1Password 提供一个服务账户令牌（`OP_SERVICE_ACCOUNT_TOKEN`）。
+定时任务、webhook、API 服务器和 `hermes chat -q` 没有人来回答提示。保存的本地登录凭据在那里仍然可用；已锁定的密码管理器会报告 `unavailable_in_this_session`，缺少登录凭据会报告 `prompt_unavailable`。请先在有交互的会话中解锁或保存，或者给 1Password 一个服务账户令牌（`OP_SERVICE_ACCOUNT_TOKEN`）。
 
 ```yaml
 vault:
   onepassword:
-    enabled: false          # opt OUT of a detected manager (default: on when installed)
-    account: ""             # `op --account` shorthand; empty = default
+    enabled: false          # 退出使用检测到的管理器（默认：安装后即为开启）
+    account: ""             # `op --account` 简写；空 = 默认
     service_account_token_env: OP_SERVICE_ACCOUNT_TOKEN
   bitwarden:
     enabled: false
 ```
 
-## 这保证了什么、又不保证什么
+## 这保证什么、不保证什么
 
-**能保证：** 密码绝不会通过 Hermes 进入模型的上下文：不会出现在工具结果、日志、会话数据库或任何进程的 CLI 参数中。填入操作经由受监管浏览器会话的直接 CDP 套接字进行，并且仅当页面来源与已保存来源完全匹配时才会执行，写入前还会在页面内再次检查。
+**保证：** 密码不会通过 Hermes 进入模型的上下文：不会出现在工具结果、日志、会话数据库或任何进程的 CLI 参数中。填入操作通过受监管的浏览器会话的直接 CDP 套接字进行，并且除非页面来源与保存的来源完全匹配（在写入前于页面内再次检查），否则会被拒绝。
 
-**不能保证：** 防范页面本身。密码一旦输入某个网站，该网站（以及它运行的任何脚本）就拿到了它，和你在浏览器里亲手输入时一样。在云端浏览器后端上，服务商的浏览器如同其他浏览器一样能看到页面。来源绑定是防止填错站点的防线，而非防范被入侵的正确站点。
+**不保证：** 无法防止页面本身。一旦密码被输入网站，该网站（及其运行的任何脚本）就拥有了它，与你亲自输入时完全一样。在云浏览器后端上，供应商的浏览器会像任何其他浏览器一样看到页面。来源绑定是防止填错网站的防护，而不是防止合法网站被入侵的防护。
