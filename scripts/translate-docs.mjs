@@ -59,6 +59,9 @@ const maxDocs =
 const API_KEY = process.env.DEEPSEEK_API_KEY || "";
 const API_URL = "https://api.deepseek.com/chat/completions";
 const MODEL = "deepseek-chat";
+// 单次调用输出上限 8K token；超过该长度的英文源按标题分块翻译，避免截断
+const CHUNK_THRESHOLD = 12000;
+const CHUNK_MAX_LEN = 8000;
 
 // 用户侧文档优先于开发者内部文档
 const CATEGORY_ORDER = [
@@ -136,6 +139,44 @@ function gitFileExists(path) {
   }
 }
 
+// 按标题把长文档切成 ≤ CHUNK_MAX_LEN 的块；只在代码围栏外切分，超长围栏块内部兜底切分
+function splitIntoChunks(source, maxLen = CHUNK_MAX_LEN) {
+  const lines = source.split("\n");
+  const blocks = [];
+  let cur = [];
+  let inFence = false;
+  const flush = () => {
+    if (cur.length) {
+      blocks.push(cur.join("\n"));
+      cur = [];
+    }
+  };
+  for (const line of lines) {
+    if (/^[ \t]*```/.test(line)) inFence = !inFence;
+    const atHeading = !inFence && /^#{1,6} /.test(line);
+    if (atHeading && cur.join("\n").length >= maxLen * 0.5) {
+      flush();
+    }
+    cur.push(line);
+    // 兜底：单个块本身超长（巨型代码块等），在围栏外的任意行边界硬切
+    if (!inFence && cur.join("\n").length >= maxLen * 2) {
+      flush();
+    }
+  }
+  flush();
+  // 贪心合并相邻小块
+  const chunks = [];
+  for (const block of blocks) {
+    const last = chunks[chunks.length - 1];
+    if (last && last.length + block.length + 1 <= maxLen) {
+      chunks[chunks.length - 1] = last + "\n" + block;
+    } else {
+      chunks.push(block);
+    }
+  }
+  return chunks;
+}
+
 async function callDeepSeek(source, retryNote = "") {
   const userContent = retryNote
     ? `${retryNote}\n\n<document>\n${source}\n</document>`
@@ -162,6 +203,24 @@ async function callDeepSeek(source, retryNote = "") {
   }
   const data = await res.json();
   return (data.choices?.[0]?.message?.content || "").trim();
+}
+
+// 用 Docusaurus 同款 MDX 编译器做语法校验（去掉 frontmatter 后编译）。
+// LLM 译文常在正文里出现裸 < 或 { 破坏 MDX，必须在写入前拦住。
+let mdxCompile = null;
+async function mdxCompiles(text) {
+  try {
+    if (mdxCompile === null) {
+      const { createRequire } = await import("node:module");
+      const require = createRequire(join(root, "website", "package.json"));
+      mdxCompile = require("@mdx-js/mdx").compile;
+    }
+    const withoutFrontmatter = text.replace(/^---\n.*?\n---\n/s, "");
+    await mdxCompile(withoutFrontmatter, { outputFormat: "function-body" });
+    return null;
+  } catch (e) {
+    return String(e.message || e).slice(0, 300);
+  }
 }
 
 function postProcess(text, source) {
@@ -200,18 +259,71 @@ function validate(out, source) {
   return errors;
 }
 
+// 分块翻译长文档：逐块调用，拼接后整体校验
+async function translateChunked(source, relPath) {
+  const chunks = splitIntoChunks(source);
+  console.log(`    分块翻译：${chunks.length} 块`);
+  const outParts = [];
+  for (let i = 0; i < chunks.length; i++) {
+    const header = `（这是长文档《${relPath}》的第 ${i + 1}/${chunks.length} 部分，直接输出该部分的中文译文，不要输出其他部分或任何说明。）\n\n<document>\n${chunks[i]}\n</document>`;
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: header },
+        ],
+        temperature: 1.3,
+        max_tokens: 8192,
+        stream: false,
+      }),
+    });
+    if (!res.ok) {
+      throw new Error(
+        `DeepSeek API ${res.status}: ${(await res.text()).slice(0, 200)}`,
+      );
+    }
+    const data = await res.json();
+    outParts.push((data.choices?.[0]?.message?.content || "").trim());
+  }
+  return outParts.join("\n\n");
+}
+
 async function translateOne(relPath, source) {
-  for (let attempt = 1; attempt <= 2; attempt++) {
+  const needsChunking = source.length > CHUNK_THRESHOLD;
+  for (let attempt = 1; attempt <= 4; attempt++) {
     try {
-      const retryNote =
-        attempt === 2
-          ? "上一次输出未通过校验（可能是代码围栏不守恒或被截断）。请完整翻译整篇文档，输出必须包含与原文相同数量的 ``` 代码围栏，不得省略任何章节。"
-          : "";
-      const raw = await callDeepSeek(source, retryNote);
+      const useChunked = needsChunking || attempt >= 3;
+      let raw;
+      if (useChunked) {
+        console.log(`    使用分块模式（第 ${attempt} 次）`);
+        raw = await translateChunked(source, relPath);
+      } else {
+        let retryNote = "";
+        if (attempt === 2) {
+          retryNote =
+            "上一次输出未通过校验（可能是代码围栏不守恒或被截断）。请完整翻译整篇文档，输出必须包含与原文相同数量的 ``` 代码围栏，不得省略任何章节。";
+        }
+        raw = await callDeepSeek(source, retryNote);
+      }
       const out = postProcess(raw, source);
-      const errors = validate(out, source);
+      let errors = validate(out, source);
+      if (errors.length === 0) {
+        const mdxError = await mdxCompiles(out);
+        if (mdxError) errors = [`MDX 编译失败: ${mdxError}`];
+      }
       if (errors.length === 0) return out;
       console.log(`    校验未通过（第 ${attempt} 次）：${errors.join("；")}`);
+      if (needsChunking && attempt >= 2) {
+        // 大文档分块成本高，重试一次仍失败则放弃本轮，下轮再试
+        console.log(`    大文档多次未过，本轮放弃（下轮自动重试）`);
+        return null;
+      }
     } catch (e) {
       console.log(`    API 调用失败（第 ${attempt} 次）：${e.message}`);
     }

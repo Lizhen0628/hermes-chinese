@@ -10,5 +10,35 @@
     "updated": "2026-09-15T08:41:39.956Z",
     "status": "llm",
     "model": "deepseek-chat"
+  },
+  "user-guide/egress/index.md": {
+    "sha256": "3faa8af965e5c08cd9dbceca561c4a136ff5f927d4e55eeef84f58d3d6bfe01b",
+    "updated": "2026-09-15T09:10:18.234Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/desktop.md": {
+    "sha256": "b436a029a00f7d3226ff03a439a69e3c80a8db9f904b7af4b9106fd45a65d900",
+    "updated": "2026-09-15T09:14:39.973Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/egress/iron-proxy.md": {
+    "sha256": "c271bb26e018f614a088fe168247547f10d9296c6356a9b91bedf5d59a86461f",
+    "updated": "2026-09-15T09:15:22.271Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/egress/network-isolation.md": {
+    "sha256": "db2ebf9ed6ba31e459856ab83ddc90c4191e56294b40a5ef5295bdfbd8d2b59e",
+    "updated": "2026-09-15T09:15:27.923Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/features/credential-vault.md": {
+    "sha256": "8e88a8faaed290ac961eb87b3bb55c79695076834c3ed11387340226f759cd5a",
+    "updated": "2026-09-15T09:15:34.010Z",
+    "status": "llm",
+    "model": "deepseek-chat"
   }
 }
