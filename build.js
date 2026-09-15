@@ -92,6 +92,9 @@ const siteUrl = "https://chinese.hermes.tools-online.site";
 const sitemapPath = join(websiteBuild, "sitemap.xml");
 if (existsSync(sitemapPath)) {
   let xml = readFileSync(sitemapPath, "utf8");
+  // 移除 /docs/search：robots.txt 禁止抓取该页，不应同时出现在 sitemap
+  xml = xml.replace(/<url><loc>[^<]*\/docs\/search<\/loc>[^]*?<\/url>/, "");
+  // 落地页作为第一条，优先级最高
   const landingEntry =
     `<url><loc>${siteUrl}/</loc>` +
     `<changefreq>weekly</changefreq><priority>1.0</priority></url>`;
