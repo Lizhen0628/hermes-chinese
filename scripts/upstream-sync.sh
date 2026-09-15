@@ -4,6 +4,7 @@
 #      （docusaurus.config.ts 除外 —— 其中包含本站专属修改，见 README）
 #   2. 抓取官方落地页快照并重新生成中文 landing/index.html
 #   3. 刷新文档站 UI 翻译（write-translations + i18n-zh.py）
+#   4. DeepSeek 自动翻译缺失/变更的文档（恢复被同步覆盖的自动翻译 → 翻译存量）
 # 输出：sync-report.md（供跟踪 issue 使用）、changed 输出
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -50,27 +51,35 @@ fi
 echo "" >> "$REPORT"; echo "落地页：${LANDING_STATUS}" >> "$REPORT"
 
 # ---------- 3. 文档站 UI 翻译刷新 ----------
-I18N_STATUS="无变化"
 (cd website && npx docusaurus write-translations --locale zh-Hans >/dev/null 2>&1) || true
 if python3 scripts/i18n-zh.py | grep -qv "更新 0 条"; then
   I18N_STATUS="已刷新"
+else
+  I18N_STATUS="无变化"
 fi
 echo "文档站 UI 翻译：${I18N_STATUS}" >> "$REPORT"
 
-# ---------- 4. 变更清单 ----------
+# ---------- 4. DeepSeek 自动翻译 ----------
+# 先恢复被 rsync --delete 删除的自动翻译（上游补了官方翻译的不会被恢复，官方 wins），
+# 再翻译缺失/变更的文档（受 MAX_DOCS_PER_RUN 限制，默认 40 篇/轮）。
+echo "运行 LLM 自动翻译……"
+node scripts/translate-docs.mjs --max "${MAX_DOCS_PER_RUN:-40}" || TRANSLATE_FAILED=1
+echo "" >> "$REPORT"
+if [ -f sync/translation-report.md ]; then
+  cat sync/translation-report.md >> "$REPORT"
+else
+  echo "LLM 翻译：⚠️ 未生成报告（脚本异常，见 Actions 日志）" >> "$REPORT"
+fi
+
+# ---------- 5. 变更清单 ----------
 echo "" >> "$REPORT"; echo "## website/ 变更文件" >> "$REPORT"
-CHANGES=$(git status --porcelain website/ landing/ | head -100)
+CHANGES=$(git status --porcelain website/ landing/ sync/ scripts/ | head -100)
 if [ -n "$CHANGES" ]; then
   changed="yes"
   {
     echo '```'
     echo "$CHANGES"
     echo '```'
-    echo ""
-    echo "未翻译文档（新增英文页将回退英文显示）："
-    COMM_NEW=$(comm -13 <(cd website/docs && find . -name '*.md' -o -name '*.mdx' | sort) \
-                       <(cd website/i18n/zh-Hans/docusaurus-plugin-content-docs/current && find . -name '*.md' -o -name '*.mdx' | sort) | head -30 || true)
-    echo '```'; echo "${COMM_NEW:-（无）}"; echo '```'
   } >> "$REPORT"
 else
   echo "无。" >> "$REPORT"

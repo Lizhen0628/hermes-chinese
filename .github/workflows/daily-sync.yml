@@ -1,6 +1,6 @@
-name: 每日上游同步
+name: 每日上游同步与自动翻译
 
-# 北京时间每天凌晨 03:00（UTC 19:00）：拉取上游 website/ 与落地页 → 构建校验 → 直接部署 → 提交同步结果 → 更新跟踪 issue
+# 北京时间每天凌晨 03:00（UTC 19:00）：拉取上游 website/ 与落地页 → DeepSeek 翻译缺失文档 → 构建校验 → 直接部署 → 提交同步结果 → 更新跟踪 issue
 on:
   schedule:
     - cron: "0 19 * * *"
@@ -17,7 +17,7 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
 
@@ -32,9 +32,13 @@ jobs:
           npm install -g npm@11
           npm ci --prefix website
 
-      - name: 同步上游 website/ 与落地页
+      - name: 同步上游 + LLM 自动翻译
         id: sync
         run: bash scripts/upstream-sync.sh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          MAX_DOCS_PER_RUN: ${{ vars.MAX_DOCS_PER_RUN || '40' }}
 
       - name: 构建校验
         run: npm run build
@@ -50,11 +54,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add website/ landing/ scripts/
+          git add website/ landing/ sync/ scripts/
           if git diff --cached --quiet; then
             echo "无内容变更"
           else
-            git commit -m "chore(sync): 上游 hermes-agent website/ 与落地页快照同步"
+            git commit -m "chore(sync): 上游 hermes-agent 同步 + LLM 自动翻译更新"
             git push
           fi
 

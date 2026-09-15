@@ -48,19 +48,27 @@ npm run serve                  # http://localhost:3000 预览
 
 - `CLOUDFLARE_API_TOKEN`：具有 Cloudflare Pages Write 权限的 API Token
 - `CLOUDFLARE_ACCOUNT_ID`：Cloudflare 账户 ID
+- `DEEPSEEK_API_KEY`：DeepSeek API Key（每日同步的 LLM 自动翻译用）
 
-自定义域名 `chinese.hermes.geeksphere.online` 绑定在 Pages 项目上，DNS 为指向 `hermes-chinese.pages.dev` 的 CNAME（橙云代理）。
+域名 `chinese.hermes.tools-online.site`（主）与 `chinese.hermes.geeksphere.online`（备）均绑定在 Pages 项目上，DNS 为指向 `hermes-chinese.pages.dev` 的 CNAME（橙云代理）。整站 `sitemap.xml` 与 `robots.txt` 由构建脚本生成。
 
-## 上游同步机制（每日自动）
+## 上游同步机制（每日自动 + DeepSeek 翻译）
 
 每天北京时间凌晨 03:00 运行[每日上游同步](.github/workflows/daily-sync.yml)（也可手动 `workflow_dispatch` 触发）：
 
 1. 稀疏克隆上游 `website/` 覆盖本仓库（`docusaurus.config.ts` 除外，其中含本站专属修改）；
 2. 抓取官方落地页快照，重跑翻译表生成中文落地页（条目失配会在报告中标记人工处理）；
-3. 刷新文档站 UI 翻译；构建校验通过后**直接部署**到 Cloudflare Pages；
-4. 提交同步结果并创建/更新跟踪 issue「上游同步：hermes-agent 官网差异」。
+3. 刷新文档站 UI 翻译；
+4. **DeepSeek 自动翻译**：对官方尚无中文翻译的文档自动补译：
+   - 只翻译官方缺失的文档，官方已有翻译的永远不碰（上游 wins）；
+   - 被上游同步删除的自动翻译，若上游未提供官方翻译则自动从 git 恢复；
+   - 译文经代码围栏守恒 / 长度比例 / frontmatter 校验，失败自动重试一次，仍失败保留英文回退并在 issue 标记人工处理；
+   - 每轮上限 `MAX_DOCS_PER_RUN`（仓库 Variables 可调，默认 40 篇），存量逐日消化；
+   - 翻译状态记录于 `sync/translations-state.json`；
+5. 构建校验通过后**直接部署**到 Cloudflare Pages；
+6. 提交同步结果并创建/更新跟踪 issue「上游同步：hermes-agent 官网差异」。
 
-文档中文内容（`website/i18n/zh-Hans/docusaurus-plugin-content-docs/`）由官方上游维护、随同步自动更新；上游未翻译的新页面会回退英文显示并在 issue 中列出。
+文档中文内容（`website/i18n/zh-Hans/docusaurus-plugin-content-docs/`）一部分来自官方上游、一部分由本仓库 LLM 翻译补齐；上游后续补了官方翻译时会自动覆盖 LLM 译文。本地手动翻译：`npm run translate`（配合环境变量 `DEEPSEEK_API_KEY`，`npm run translate:dry` 仅预览清单）。
 
 ## 与官方的差异（本仓库专属修改）
 

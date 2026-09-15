@@ -15,8 +15,10 @@ import {
   existsSync,
   mkdirSync,
   readdirSync,
+  readFileSync,
   rmSync,
   statSync,
+  writeFileSync,
 } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -84,6 +86,26 @@ const docs404 = join(dist, "docs", "404.html");
 if (existsSync(docs404)) {
   cpSync(docs404, join(dist, "404.html"));
 }
+
+// sitemap：文档站生成的 sitemap 提升到根目录，并把落地页插入为第一条
+const siteUrl = "https://chinese.hermes.tools-online.site";
+const sitemapPath = join(websiteBuild, "sitemap.xml");
+if (existsSync(sitemapPath)) {
+  let xml = readFileSync(sitemapPath, "utf8");
+  const landingEntry =
+    `<url><loc>${siteUrl}/</loc>` +
+    `<changefreq>weekly</changefreq><priority>1.0</priority></url>`;
+  xml = xml.replace(/<urlset([^>]*)>/, `<urlset$1>${landingEntry}`);
+  writeFileSync(join(dist, "sitemap.xml"), xml);
+} else {
+  console.error("[build] 警告：website/build/sitemap.xml 不存在，跳过 sitemap");
+}
+
+// robots.txt
+writeFileSync(
+  join(dist, "robots.txt"),
+  `User-agent: *\nAllow: /\nDisallow: /docs/search\n\nSitemap: ${siteUrl}/sitemap.xml\n`,
+);
 
 log(`完成：dist/ 共 ${dirSizeMB(dist)} MB`);
 log("本地预览：npx serve dist");

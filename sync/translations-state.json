@@ -1,0 +1,14 @@
+{
+  "getting-started/platform-support.md": {
+    "sha256": "250c36a664d84170cf9240486b920208ef2e7fba1392c445d265b20d01bdf1e1",
+    "updated": "2026-09-15T08:40:42.874Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/bot-mode.md": {
+    "sha256": "1d52d5d63bac1012d9ae2c4ef049db42315b3249badeab5a6ca65c192f8f2129",
+    "updated": "2026-09-15T08:41:39.956Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  }
+}
