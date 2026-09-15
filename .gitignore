@@ -1,0 +1,8 @@
+node_modules/
+dist/
+website/build/
+website/.docusaurus/
+website/static/api/*.json
+website/static/llms*.txt
+.DS_Store
+*.log

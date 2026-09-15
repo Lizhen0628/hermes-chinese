@@ -1,0 +1,14 @@
+{
+  "name": "hermes-chinese",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hermes Agent 社区中文站 —— 中文落地页 + Docusaurus 中文文档",
+  "type": "module",
+  "scripts": {
+    "sync:landing": "python3 scripts/sync-landing.py",
+    "sync:assets": "bash scripts/download-assets.sh",
+    "sync:i18n": "cd website && npx docusaurus write-translations --locale zh-Hans && cd .. && python3 scripts/i18n-zh.py",
+    "build": "node build.js",
+    "serve": "npx serve dist"
+  }
+}

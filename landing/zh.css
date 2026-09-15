@@ -1,0 +1,155 @@
+/* 中文站增强样式：为官方字体栈补充 CJK 回退字体，并静态化若干交互态。
+   本文件在官方 CSS 之后加载。 */
+
+/* 字体栈回退：官方为 Latin 字体（Rules / Aeonik Fono / Courier Prime），
+   中文字形回退到系统字体，保证整站统一观感。 */
+:root,
+:host {
+  --font-body: "Rules Variable", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-rules: var(--font-body);
+  --font-rules-gothic-cnd: "Rules Gothic Condensed", "Rules Variable", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-rules-gothic-cmp: "Rules Gothic Compressed", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-display: var(--font-rules-gothic-cmp);
+  --font-mono: "Rules Condensed", "Rules Variable", "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "PingFang SC", "Microsoft YaHei", monospace;
+}
+
+/* 大字标语（Rules Gothic Condensed 仅含拉丁字形，中文回退后行高更满，略收紧字距） */
+.landing-hero-title {
+  letter-spacing: 0.02em;
+}
+
+/* FAQ 手风琴：SSR 输出的答案层是 Radix 关闭态（绝对定位 + 隐藏），
+   静态站改由 landing.js 通过高度动画控制。 */
+[data-faq-answer] {
+  position: static !important;
+  inset: auto !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.25s ease;
+}
+[data-faq-answer][data-state="open"] {
+  height: auto;
+}
+
+/* 吸顶导航：原始类为 invisible + -translate-y-full，滚动后由 landing.js 加 .is-pinned 显示 */
+.hw-teams-paper.fixed.is-pinned {
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* 导航「安装」下拉菜单（官方为 Radix 弹层，此处静态实现） */
+.hw-install-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 120;
+  min-width: 210px;
+  background: var(--hermes-paper);
+  color: var(--hermes-primary);
+  border: 1px solid color-mix(in srgb, var(--hermes-primary) 25%, transparent);
+  box-shadow: var(--hpv2-shadow-lift-strong, 0 10px 30px rgb(0 0 0 / 0.25));
+  padding: 6px;
+  display: none;
+}
+.hw-install-menu.is-open {
+  display: block;
+}
+.hw-install-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: var(--hw-teams-label, 12px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hw-install-menu a:hover {
+  background: color-mix(in srgb, var(--hermes-primary) 10%, transparent);
+}
+.hw-install-menu .hw-install-menu-label {
+  padding: 8px 12px 4px;
+  opacity: 0.6;
+  font-family: var(--font-mono);
+  font-size: var(--hw-teams-label-sm, 11px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* 移动端全屏菜单（官方为 Radix dialog，此处静态实现） */
+.hw-mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--hermes-primary);
+  color: var(--hermes-white, #f5f5f5);
+  display: none;
+  flex-direction: column;
+  padding: max(env(safe-area-inset-top), 20px) var(--hw-teams-pad-x, 20px) 20px;
+}
+.hw-mobile-menu.is-open {
+  display: flex;
+}
+.hw-mobile-menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hw-mobile-menu-close {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  padding: 8px;
+}
+.hw-mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 28px;
+}
+.hw-mobile-menu nav a {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 0;
+  border-bottom: 1px dotted color-mix(in srgb, currentColor 35%, transparent);
+}
+.hw-mobile-menu-foot {
+  margin-top: auto;
+  padding-top: 20px;
+  opacity: 0.7;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+/* 复制命令按钮的「已复制」反馈 */
+.landing-terminal-copy {
+  position: relative;
+  cursor: pointer;
+}
+.landing-terminal-copy::after {
+  content: "已复制";
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: calc(100% + 6px);
+  background: var(--hermes-paper);
+  color: var(--hermes-primary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.landing-terminal-copy.hw-copied::after {
+  opacity: 1;
+}

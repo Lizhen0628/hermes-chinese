@@ -1,0 +1,71 @@
+name: 每日上游同步
+
+# 北京时间每天凌晨 03:00（UTC 19:00）：拉取上游 website/ 与落地页 → 构建校验 → 直接部署 → 提交同步结果 → 更新跟踪 issue
+on:
+  schedule:
+    - cron: "0 19 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: daily-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: 安装 npm 11 与文档站依赖
+        run: |
+          npm install -g npm@11
+          npm ci --prefix website
+
+      - name: 同步上游 website/ 与落地页
+        id: sync
+        run: bash scripts/upstream-sync.sh
+
+      - name: 构建校验
+        run: npm run build
+
+      - name: 部署到 Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=hermes-chinese --commit-dirty=true
+
+      - name: 提交同步结果
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add website/ landing/ scripts/
+          if git diff --cached --quiet; then
+            echo "无内容变更"
+          else
+            git commit -m "chore(sync): 上游 hermes-agent website/ 与落地页快照同步"
+            git push
+          fi
+
+      - name: 更新跟踪 issue
+        if: steps.sync.outputs.changed == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          NUM=$(gh issue list --state open --search "上游同步 in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue edit "$NUM" --body-file sync-report.md
+          else
+            gh issue create --title "上游同步：hermes-agent 官网差异" --body-file sync-report.md
+          fi
