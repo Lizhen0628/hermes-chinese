@@ -398,6 +398,10 @@ async function main() {
   }
   const state = loadState();
 
+  // 必须先恢复再计算 pending：上游 rsync 会删除本仓库的自动翻译文件，
+  // 不先恢复会把已翻译文档误判为待翻译（浪费配额且拖慢覆盖速度）。
+  restore(state);
+
   if (restoreOnly) {
     restore(state);
     return;
@@ -459,7 +463,6 @@ async function main() {
 
   const batch = pending.slice(0, maxDocs);
   const report = { translated: [], failed: [], restored: 0 };
-  report.restored = restore(state);
 
   for (const item of batch) {
     const kb = (item.size / 1024).toFixed(1);
