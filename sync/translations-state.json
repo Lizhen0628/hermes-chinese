@@ -568,5 +568,257 @@
     "updated": "2026-09-15T10:48:58.139Z",
     "status": "llm",
     "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/productivity/productivity-live-dashboard.md": {
+    "sha256": "980e322519c2d35e59f1d027965df0650cdb8018436ecc945b7bac33cf9029fe",
+    "updated": "2026-09-15T10:56:57.420Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/security/security-web-pentest.md": {
+    "sha256": "e62bf48485443bac7845906054ffed9b0c21fbd67522b449923597401f18d36e",
+    "updated": "2026-09-15T10:59:46.533Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/smart-home/smart-home-openhue.md": {
+    "sha256": "ec71500d9bab457758b9a717dacb6b1f391da259b4ab769d7117cb2d0a4dd17b",
+    "updated": "2026-09-15T10:59:49.562Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/social-media/social-media-reddit-reading.md": {
+    "sha256": "5110adefefc2dfbcb07a63eaae43ac3799309912acb4904a66fedbf2298eb042",
+    "updated": "2026-09-15T10:59:57.264Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/software-development/software-development-grill-me.md": {
+    "sha256": "eab40e518ecd9b7c99d8a6b85e5d6b13b7d0fef3e8fe513a7c92635c4ea5e1d2",
+    "updated": "2026-09-15T11:01:06.078Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/software-development/software-development-pr-lens.md": {
+    "sha256": "2d480f7be46c99416726ccdd3dee271598b1d4e76c1eec18726578d25435dc70",
+    "updated": "2026-09-15T11:01:16.893Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/software-development/software-development-subagent-driven-development.md": {
+    "sha256": "6b7df1bf52dd5f56ed468a93fd72da157d368cddcfd0a44be21c97e7d3feba4d",
+    "updated": "2026-09-15T11:01:24.411Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/web-development/web-development-cloudflare-temporary-deploy.md": {
+    "sha256": "4b5b01de17f4b651a0b114774dc04349980a5d0340bdcf9a8c5881984b5480b6",
+    "updated": "2026-09-15T11:01:32.627Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/web-development/web-development-har-derived-api-client.md": {
+    "sha256": "1f09d2ef04cdc47ecdecb53b3772db1434eb543b5b6597d1a8f19277da927097",
+    "updated": "2026-09-15T11:01:41.205Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/web-development/web-development-publish-site.md": {
+    "sha256": "db5ccd32370d2ee083b29efdb47d7abef76dc517d73649aed73b6000d3d40bc7",
+    "updated": "2026-09-15T11:01:50.724Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/web-development/web-development-scrollcraft.md": {
+    "sha256": "588685e3bf6b8cef27de3cf067cfe2e60f9f1ac5e1e178cb64f5a3e61dcbf1ac",
+    "updated": "2026-09-15T11:02:07.791Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/which-file-does-what.md": {
+    "sha256": "ce54b39d2b9a15decc845cb802298b21d70d0bcf688105c7851336998702345c",
+    "updated": "2026-09-15T11:02:21.110Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "guides/agent-email-address.md": {
+    "sha256": "56588562f53d427df867e1707741659394573ca4496628112029fea96f3eebfd",
+    "updated": "2026-09-15T11:02:27.093Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "guides/desktop-native-signin.md": {
+    "sha256": "3df84a2eb03e5f0963ff8ea58969a585e1b6e9e723c1d52df1ae6868957d1fe1",
+    "updated": "2026-09-15T11:02:33.709Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "guides/google-vertex.md": {
+    "sha256": "f226025c27d6cbd572c9fd8aa587e649aa6eda39f6cfd7bad1b0d4a87db5ab4c",
+    "updated": "2026-09-15T11:02:40.298Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "guides/manage-hermes-cloud-with-mcp.md": {
+    "sha256": "f120554e2782066c862451ec3c22db48579a58275f246dee81a64a04cd4fdd0a",
+    "updated": "2026-09-15T11:02:47.490Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "guides/run-nemotron-3-ultra-free.md": {
+    "sha256": "dcb819e98e99fe7bcb0a9fc4475c22cb6bc9a9ef9f2f61658841ed5557d0423d",
+    "updated": "2026-09-15T11:02:52.611Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "guides/secure-hermes-on-a-work-machine.md": {
+    "sha256": "9d133ad2a20f61536f2bb5b21e60b4495e423cd803149f5125dfc950fcffde01",
+    "updated": "2026-09-15T11:03:02.273Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "guides/troubleshooting-agent-quality.md": {
+    "sha256": "ea72440811268becd573634d5e9d0861abfec8a815b47e282d06eae11b01fa99",
+    "updated": "2026-09-15T11:03:13.119Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "reference/automation-blueprints-catalog.mdx": {
+    "sha256": "273d9e920820d618425ab7f41dc9fe227fc97a86e2cf35a1ee1a1204b71451c4",
+    "updated": "2026-09-15T11:03:15.548Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "reference/cli-symbols.md": {
+    "sha256": "7434e50f859242eaead6b4d99c76bda18b729c4fa2a6e34a3e81f2b2b075a63f",
+    "updated": "2026-09-15T11:03:21.780Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/billing-lifecycle.md": {
+    "sha256": "06a8b4fcf79d6d81141785b409c0b36d64446fe6b61709fa7da4ae86d2c86faf",
+    "updated": "2026-09-15T11:03:39.312Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/browser-provider-plugin.md": {
+    "sha256": "04c2cdcecdd6725100d9140edeea176cbbeb9de01eaa1c50193e81465fe1316b",
+    "updated": "2026-09-15T11:03:45.374Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/chronos-managed-cron-contract.md": {
+    "sha256": "1cf2d2fe39406fb6eb5c68a1742861bde9db5e814d52e0e16bf66064e03a0171",
+    "updated": "2026-09-15T11:03:57.719Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/cli-internals.md": {
+    "sha256": "dc780ecc6317e4acaa00561ff9d04b7b50819617441dd0763984bb22a13d67d6",
+    "updated": "2026-09-15T11:04:03.484Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/codebase-ownership.md": {
+    "sha256": "3b3171e5d9b9b2b1eb327b435febc12c514a5b98616e1ab0463293aeee34e52a",
+    "updated": "2026-09-15T11:04:07.328Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/completion-backlog-delivery.md": {
+    "sha256": "a10693d89834cc06374c50bdc259d21f7b1280a0c3f7df79c380bb038496efd9",
+    "updated": "2026-09-15T11:04:10.726Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/egress-internals.md": {
+    "sha256": "6c1deebaab2a0089d4cc63f314738b9493bb81d814c01b224b6fbedf4df9b0ee",
+    "updated": "2026-09-15T11:06:03.761Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/gateway-monitoring.md": {
+    "sha256": "4450f13a483638413956b6b3abb211d8afb526316f38098b6d0bbf78a66fd79c",
+    "updated": "2026-09-15T11:06:20.047Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/gateway-session-lifecycle.md": {
+    "sha256": "a84099fc813f704f1bb726b8e71de085e475e220c8689782504c06fae787190d",
+    "updated": "2026-09-15T11:06:49.806Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/micro-compaction.md": {
+    "sha256": "857c14debb0c3ab07fcff1ce4e105ca8009bc7c358eb3ff103346012b52aa23c",
+    "updated": "2026-09-15T11:07:12.163Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/middleware.md": {
+    "sha256": "2af65e1c688b50c6bd7f13a0f1c70e55c064ea5a8ab121ef5a7ec8de2986f475",
+    "updated": "2026-09-15T11:07:20.220Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/multiplexing-gateway.md": {
+    "sha256": "b2fd53e5bf27faffa1fe0a993609bc86947aa44d9467ab15a197857798caa40b",
+    "updated": "2026-09-15T11:07:30.842Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/observer-hooks.md": {
+    "sha256": "5daccee8f5b2df10380f5a04eb533e04c842e0201d681d31a9cccdebbc138d80",
+    "updated": "2026-09-15T11:07:42.434Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/relay-connector-contract.md": {
+    "sha256": "97cb7b10e3581c500178e46d54a561d2cf79af21574fd1e543a8ec71b4bdf6e2",
+    "updated": "2026-09-15T11:08:36.849Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/relay-shared-metrics.md": {
+    "sha256": "ba4864f89769877222b80faa58162f457053a143720ed4581a5e1d0bc228210e",
+    "updated": "2026-09-15T11:09:02.301Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/secret-source-plugin.md": {
+    "sha256": "0a00998cb68952e9796aa774de05edc367422844b1f5f7da428a927ffa5557c4",
+    "updated": "2026-09-15T11:09:12.831Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/state-db-recovery.md": {
+    "sha256": "4798ab27a7a874e769e0c3a13cc0b18da5335179c9ed167e0d72362496c85e37",
+    "updated": "2026-09-15T11:09:17.525Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/streaming-tts.md": {
+    "sha256": "c0a3678c23eef9d6f39abb75d08e3bb4bc7858611b185635a6ba0efd7da7f237",
+    "updated": "2026-09-15T11:09:22.730Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/subagent-lifecycle-api.md": {
+    "sha256": "627a7e88653f0353314a62c7eb5eefbb6083a55312cbfd585eddc1d6b46226c7",
+    "updated": "2026-09-15T11:09:26.029Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/terminal-environment-plugin.md": {
+    "sha256": "237ffeab8b9bd56c5171a3ac5f326da690d3ee99c566c104dc37c0c8491aa54b",
+    "updated": "2026-09-15T11:09:31.585Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "developer-guide/worktree-ui-dev.md": {
+    "sha256": "cc5213efcc8bcf191b09765c5fb15e16b3ec7bb8abb253d9d861ff409bd8a33e",
+    "updated": "2026-09-15T11:09:39.331Z",
+    "status": "llm",
+    "model": "deepseek-chat"
   }
 }
