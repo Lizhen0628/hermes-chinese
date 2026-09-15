@@ -41,7 +41,7 @@
   },
   "link.item.label.Desktop Download": {
     "message": "桌面应用下载",
-    "description": "The label of footer link with label=Desktop Download linking to https://hermes-agent.nousresearch.com/"
+    "description": "The label of footer link with label=Desktop Download linking to /"
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
