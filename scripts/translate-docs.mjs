@@ -62,6 +62,8 @@ const MODEL = "deepseek-chat";
 // 单次调用输出上限 8K token；超过该长度的英文源按标题分块翻译，避免截断
 const CHUNK_THRESHOLD = 12000;
 const CHUNK_MAX_LEN = 8000;
+// 单篇最大重试轮数：超过后停止自动重试（防止每天空烧配额），保持英文回退，需人工翻译
+const MAX_ATTEMPTS = Number(process.env.MAX_TRANSLATION_ATTEMPTS) || 3;
 
 // 用户侧文档优先于开发者内部文档
 const CATEGORY_ORDER = [
@@ -427,12 +429,17 @@ async function main() {
   }
   if (pruned) console.log(`[prune] 清理孤儿翻译 ${pruned} 篇`);
 
-  // 找出待翻译清单
+  // 找出待翻译清单（已达重试上限的除外，防止每天空烧配额）
   const pending = [];
+  const exhausted = [];
   for (const fp of walkMd(DOCS_DIR)) {
     const relPath = fp.slice(DOCS_DIR.length + 1);
     const zhPath = join(ZH_DIR, relPath);
     if (existsSync(zhPath)) continue; // 官方（或已有）翻译 → 不碰
+    if ((state[relPath]?.attempts ?? 0) >= MAX_ATTEMPTS) {
+      exhausted.push(relPath);
+      continue;
+    }
     const src = readFileSync(fp, "utf8");
     pending.push({
       relPath,
@@ -470,6 +477,13 @@ async function main() {
     if (out === null) {
       console.log(`  ⚠️ 失败，跳过（保留英文回退）`);
       report.failed.push(item.relPath);
+      // 记录失败次数，达到 MAX_ATTEMPTS 后停止自动重试
+      state[item.relPath] = {
+        ...(state[item.relPath] || {}),
+        attempts: (state[item.relPath]?.attempts || 0) + 1,
+        last_failed: new Date().toISOString(),
+      };
+      saveState(state);
       continue;
     }
     const zhPath = join(ZH_DIR, item.relPath);
@@ -494,6 +508,9 @@ async function main() {
   lines.push("");
   lines.push(`- 待翻译存量：${pending.length} 篇；本轮处理：${batch.length} 篇`);
   lines.push(`- 🤖 翻译成功：${report.translated.length} 篇（含恢复 ${report.restored} 篇）`);
+  if (exhausted.length) {
+    lines.push(`- 🛑 已达重试上限（${MAX_ATTEMPTS} 轮），停止自动重试，需人工翻译：${exhausted.length} 篇`);
+  }
   lines.push(`- ⚠️ 失败待人工：${report.failed.length} 篇`);
   if (report.translated.length) {
     lines.push("");

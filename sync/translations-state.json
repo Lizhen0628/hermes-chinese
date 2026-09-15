@@ -820,5 +820,29 @@
     "updated": "2026-09-15T11:09:39.331Z",
     "status": "llm",
     "model": "deepseek-chat"
+  },
+  "developer-guide/desktop-plugin-sdk.md": {
+    "attempts": 2
+  },
+  "user-guide/skills/optional/creative/creative-baoyu-article-illustrator.md": {
+    "attempts": 2
+  },
+  "user-guide/skills/optional/creative/creative-comfyui.md": {
+    "attempts": 2
+  },
+  "user-guide/skills/optional/creative/creative-sketch.md": {
+    "attempts": 2
+  },
+  "user-guide/skills/optional/devops/devops-hermes-s6-container-supervision.md": {
+    "attempts": 2
+  },
+  "user-guide/skills/optional/research/research-research-paper-writing.md": {
+    "attempts": 2
+  },
+  "user-guide/skills/optional/software-development/software-development-ast-grep.md": {
+    "attempts": 2
+  },
+  "user-guide/skills/optional/software-development/software-development-code-wiki.md": {
+    "attempts": 2
   }
 }
