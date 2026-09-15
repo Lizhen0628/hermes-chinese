@@ -294,6 +294,39 @@ async function translateChunked(source, relPath) {
   return outParts.join("\n\n");
 }
 
+// frontmatter 安全重建：以源文件 frontmatter 为骨架（保证 YAML 合法、键序不变），
+// 仅把 title / description / sidebar_label 的译文值用双引号安全包裹后填回。
+// LLM 在中文标题里输出裸 ": " 是 YAML 解析爆炸的重灾区，这里从根上杜绝。
+const FRONTMATTER_TEXT_KEYS = ["title", "description", "sidebar_label"];
+
+function sanitizeFrontmatter(out, source, relPath) {
+  const fmRe = /^---\n([\s\S]*?\n)---\n/;
+  const sm = source.match(fmRe);
+  const om = out.match(fmRe);
+  if (!sm) return out; // 源无 frontmatter → 译文不需要
+  if (!om) {
+    console.log(`    ${relPath}: 译文丢失 frontmatter`);
+    return null;
+  }
+  const getTranslatedVal = (fm, key) => {
+    const re = new RegExp(`^${key}:[ \\t]*(["']?)([\\s\\S]*?)\\1[ \\t]*$`, "m");
+    const m = fm.match(re);
+    return m ? m[2].trim() : null;
+  };
+  const lines = sm[1].split("\n").map((line) => {
+    const key = line.match(/^([A-Za-z_-]+):/)?.[1];
+    if (key && FRONTMATTER_TEXT_KEYS.includes(key)) {
+      const val = getTranslatedVal(om[1], key);
+      if (val) {
+        return `${key}: "${val.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
+      }
+      return line; // 译文没有给出该键的译文 → 保留源值（英文）
+    }
+    return line; // 其余键与多行结构一律以源为准
+  });
+  return `---\n${lines.join("\n")}---\n` + out.slice(om[0].length);
+}
+
 async function translateOne(relPath, source) {
   const needsChunking = source.length > CHUNK_THRESHOLD;
   for (let attempt = 1; attempt <= 4; attempt++) {
@@ -311,7 +344,12 @@ async function translateOne(relPath, source) {
         }
         raw = await callDeepSeek(source, retryNote);
       }
-      const out = postProcess(raw, source);
+      const out0 = postProcess(raw, source);
+      const out = sanitizeFrontmatter(out0, source, relPath);
+      if (out === null) {
+        console.log(`    校验未通过（第 ${attempt} 次）：frontmatter 丢失`);
+        continue;
+      }
       let errors = validate(out, source);
       if (errors.length === 0) {
         const mdxError = await mdxCompiles(out);

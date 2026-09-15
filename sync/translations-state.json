@@ -40,5 +40,41 @@
     "updated": "2026-09-15T09:15:34.010Z",
     "status": "llm",
     "model": "deepseek-chat"
+  },
+  "user-guide/features/document-extraction.md": {
+    "sha256": "ccb837cc5dc6363a7f37ce44197570cc0e19b4538c6e794b840a7307b2b24d17",
+    "updated": "2026-09-15T09:48:28.747Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/features/heartbeat.md": {
+    "sha256": "75b21c3a5540659bd781a0210824fc6e7475442b9ad0a2acc9dd7afad806de5f",
+    "updated": "2026-09-15T09:48:34.316Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/features/kanban-multi-gateway.md": {
+    "sha256": "8b7d2eb1fbebbca28f416a730eda5082a3f24df121892e7953437baeaf650aab",
+    "updated": "2026-09-15T09:48:37.733Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/features/loops.md": {
+    "sha256": "d91c1bdb34f0a1e1ffe581ab7fb13acd630b932d3b49f67bcb2fd58081cdca55",
+    "updated": "2026-09-15T09:48:45.779Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/features/mixture-of-agents.md": {
+    "sha256": "9e8f6334036958706f722e33d36102d2e19cc138bceb0c6a8c30617ef6d36c33",
+    "updated": "2026-09-15T09:48:56.366Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/features/pets.md": {
+    "sha256": "d741033344c853a3d765c6c8f59272c5bd317a41fd290bcf3f4abca4921e71d1",
+    "updated": "2026-09-15T09:49:06.906Z",
+    "status": "llm",
+    "model": "deepseek-chat"
   }
 }
