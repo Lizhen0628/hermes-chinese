@@ -9,11 +9,11 @@
  * 用法：node build.js [--skip-docs]
  *   --skip-docs  跳过 Docusaurus 构建，直接复用 website/build（调试落地页用）
  */
-import { execSync } from "node:child_process";
 import {
   cpSync,
   existsSync,
   mkdirSync,
+  readdirSync,
   rmSync,
   statSync,
 } from "node:fs";
@@ -33,13 +33,16 @@ function log(msg) {
 }
 
 function dirSizeMB(p) {
-  const walk = (d) =>
-    execSync(`find ${JSON.stringify(d)} -type f -print0 | xargs -0 stat -f%z`)
-      .toString()
-      .split("\n")
-      .filter(Boolean)
-      .reduce((a, b) => a + Number(b), 0);
-  return (walk(p) / 1024 / 1024).toFixed(1);
+  let total = 0;
+  const walk = (d) => {
+    for (const name of readdirSync(d)) {
+      const fp = join(d, name);
+      const st = statSync(fp);
+      total += st.isDirectory() ? walk(fp) : st.size;
+    }
+  };
+  walk(p);
+  return (total / 1024 / 1024).toFixed(1);
 }
 
 // 1. Docusaurus 文档构建（仅 zh-Hans locale）
