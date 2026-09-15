@@ -822,27 +822,49 @@
     "model": "deepseek-chat"
   },
   "developer-guide/desktop-plugin-sdk.md": {
-    "attempts": 2
+    "attempts": 3,
+    "last_failed": "2026-09-15T22:11:19.931Z"
   },
   "user-guide/skills/optional/creative/creative-baoyu-article-illustrator.md": {
-    "attempts": 2
+    "attempts": 3,
+    "last_failed": "2026-09-15T22:04:19.893Z"
   },
   "user-guide/skills/optional/creative/creative-comfyui.md": {
-    "attempts": 2
+    "attempts": 3,
+    "last_failed": "2026-09-15T22:05:10.688Z"
   },
   "user-guide/skills/optional/creative/creative-sketch.md": {
-    "attempts": 2
+    "attempts": 3,
+    "last_failed": "2026-09-15T22:06:16.803Z"
   },
   "user-guide/skills/optional/devops/devops-hermes-s6-container-supervision.md": {
-    "attempts": 2
+    "attempts": 3,
+    "last_failed": "2026-09-15T22:06:43.007Z"
   },
   "user-guide/skills/optional/research/research-research-paper-writing.md": {
-    "attempts": 2
+    "attempts": 3,
+    "last_failed": "2026-09-15T22:09:14.158Z"
   },
   "user-guide/skills/optional/software-development/software-development-ast-grep.md": {
-    "attempts": 2
+    "attempts": 3,
+    "last_failed": "2026-09-15T22:09:30.994Z"
   },
   "user-guide/skills/optional/software-development/software-development-code-wiki.md": {
-    "attempts": 2
+    "sha256": "c2d056690ad6c80bf2a02fe9dc7a71ca25d36bd3d94ed5b608f16bc6cbd19abe",
+    "updated": "2026-09-15T22:09:47.465Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/creative/creative-auteur.md": {
+    "sha256": "48cd65307c9ce6d517b08f6b985963626e1c9d079a20cf2ac0a3a8d98591f004",
+    "updated": "2026-09-15T22:03:58.868Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/creative/creative-ip-as-logo.md": {
+    "sha256": "17e957300989524a7953c0de70e5e340d0d7774288a27ee18df9a7bcf182a092",
+    "updated": "2026-09-15T22:05:30.553Z",
+    "status": "llm",
+    "model": "deepseek-chat"
   }
 }

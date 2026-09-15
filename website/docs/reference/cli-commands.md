@@ -313,8 +313,10 @@ Options:
 | `--no-supervise` | On `run`: inside the s6-overlay Docker image, opt out of auto-supervision and use pre-s6 foreground semantics — gateway runs as the container's main process with no auto-restart. No-op outside the s6 image. Equivalent to setting `HERMES_GATEWAY_NO_SUPERVISE=1`. |
 | `--external-supervisor` | On `run`: declare that a wrapper-provided process manager owns the foreground gateway. Use this when `sudo`, `env -i`, or another wrapper strips launchd/systemd's native environment marker. In-chat restarts and updates exit back to that manager instead of spawning a detached replacement. |
 
-`--external-supervisor` is a restart-policy contract: an in-chat restart or
-service-restart update exits with status `75`, so the wrapper's supervisor must
+`--external-supervisor` is a restart-policy contract: an in-chat restart,
+`hermes gateway restart`, or service-restart update exits with status `75`
+(the CLI then waits for the supervisor's fresh PID instead of running a
+foreground gateway of its own), so the wrapper's supervisor must
 relaunch the gateway after that nonzero exit. For systemd, use
 `Restart=on-failure` or `Restart=always` and do not include `75` in
 `RestartPreventExitStatus`; for launchd, configure `KeepAlive` to relaunch after
@@ -1225,7 +1227,7 @@ Subcommands:
 |------------|-------------|
 | `show` | Show current config values. |
 | `edit` | Open `config.yaml` in your editor. |
-| `get <key> [--json]` | Print a single config value by dotted key (e.g. `hermes config get model.default`). `--json` emits machine-readable output. |
+| `get <key> [--json] [--raw]` | Print a single config value by dotted key (e.g. `hermes config get model.default`). `--json` emits machine-readable output. Credential-shaped values (`api_key`, `*_TOKEN`, `*_SECRET`, `password`, …) are masked (`sk-o...7890`) because the agent runs this from sessions whose transcripts persist; `--raw` prints the real value (or set `security.redact_secrets: false`). |
 | `set <key> <value>` | Set a config value. |
 | `unset <key>` | Remove a config key, reverting it to the built-in default. |
 | `path` | Print the config file path. |
@@ -1722,8 +1724,9 @@ Import a **Claude Code** (`~/.claude`) or **OpenAI Codex CLI** (`~/.codex`) setu
 | `--dry-run` | Preview only — write nothing. |
 | `--overwrite` | Replace conflicting MCP servers / skills (default: skip). |
 | `--yes`, `-y` | Skip confirmation prompts. |
+| `--sync` | Re-import every previously imported source whose files changed since the last import. Prompt-free; combine with `--dry-run` to preview. |
 
-See the **[import guide](../user-guide/import-from-other-agents.md)** for the full mapping tables.
+Every successful import registers its source in `~/.hermes/import-sync.json`; `hermes import-agent --sync` then re-imports any registered source whose files changed (a cron-friendly way to keep an imported Claude Code / Codex setup current). See the **[import guide](../user-guide/import-from-other-agents.md)** for the full mapping tables.
 
 ## `hermes serve`
 
@@ -1804,6 +1807,7 @@ Examples:
 ```bash
 hermes profile list
 hermes profile create work --clone
+hermes profile create work --clone --sync-imports   # also carry over the import-agent sync manifest
 hermes profile use work
 hermes profile alias work --name h-work
 hermes profile export work -o work-backup.tar.gz
