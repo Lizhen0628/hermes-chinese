@@ -1,7 +1,7 @@
 # hermes-chinese · Hermes Agent 中文站
 
 Hermes Agent（[Nous Research](https://nousresearch.com) 开源的、与你共同成长的自托管 AI 智能体）的社区中文站点，托管于 Cloudflare Pages：
-**https://chinese.hermes.geeksphere.online**（备用：https://hermes-chinese.pages.dev）
+**https://chinese.hermes.tools-online.site**（备用：https://chinese.hermes.geeksphere.online · https://hermes-chinese.pages.dev）
 
 ## 这是什么
 

@@ -7,7 +7,7 @@ const config: Config = {
   tagline: '与你共同成长的开源 AI 智能体（社区中文翻译站）',
   favicon: 'img/favicon.ico',
 
-  url: 'https://chinese.hermes.geeksphere.online',
+  url: 'https://chinese.hermes.tools-online.site',
   baseUrl: '/docs/',
 
   organizationName: 'NousResearch',
