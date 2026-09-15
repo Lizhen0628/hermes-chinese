@@ -9,6 +9,7 @@
  * 用法：node build.js [--skip-docs]
  *   --skip-docs  跳过 Docusaurus 构建，直接复用 website/build（调试落地页用）
  */
+import { execSync } from "node:child_process";
 import {
   cpSync,
   existsSync,
