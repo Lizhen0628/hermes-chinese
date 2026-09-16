@@ -50,6 +50,9 @@ function dirSizeMB(p) {
 
 // 1. Docusaurus 文档构建（仅 zh-Hans locale）
 if (!skipDocs) {
+  // 技能/插件页面懒加载的目录数据（website/static/api/*.json）
+  log("拉取官方目录数据（技能/插件/蓝图）……");
+  execSync("node scripts/fetch-catalogs.mjs", { cwd: root, stdio: "inherit" });
   log("构建 Docusaurus 文档（--locale zh-Hans）……");
   execSync("npx docusaurus build --locale zh-Hans", {
     cwd: website,
