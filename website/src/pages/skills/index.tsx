@@ -480,7 +480,7 @@ const PAGE_SIZE = 60;
 // `static/api/` ends up at `/docs/api/`. Hardcoding here is fine because the
 // same `baseUrl` is enforced repo-wide; if it ever changes, this is the only
 // place that needs to follow.
-const SKILLS_URL = "/docs/api/skills.json";
+const SKILLS_URL = "/docs/api/skills.json.gz";
 const META_URL = "/docs/api/skills-meta.json";
 
 function buildSearchHaystack(s: Skill): string {
@@ -557,8 +557,14 @@ export default function SkillsDashboard() {
       try {
         const [sk, mt] = await Promise.all([
           fetch(SKILLS_URL).then((r) => {
-            if (!r.ok) throw new Error(`skills.json HTTP ${r.status}`);
-            return r.json();
+            if (!r.ok) throw new Error(`skills.json.gz HTTP ${r.status}`);
+            // 目录以 gzip 存储：官方全量 10 万条明文 54.5 MB 超 CF Pages
+            // 单文件 25 MiB 限额，压缩后 ~10 MB（scripts/fetch-catalogs.mjs 生成）。
+            let body = r.body;
+            if (body) {
+              body = body.pipeThrough(new DecompressionStream("gzip"));
+            }
+            return new Response(body).text().then((t) => JSON.parse(t));
           }),
           fetch(META_URL).then((r) => (r.ok ? r.json() : {})).catch(() => ({})),
         ]);

@@ -3,6 +3,7 @@ dist/
 website/build/
 website/.docusaurus/
 website/static/api/*.json
+website/static/api/*.gz
 website/static/llms*.txt
 .DS_Store
 *.log

@@ -4,7 +4,8 @@
 #      （docusaurus.config.ts 除外 —— 其中包含本站专属修改，见 README）
 #   2. 抓取官方落地页快照并重新生成中文 landing/index.html
 #   3. 刷新文档站 UI 翻译（write-translations + i18n-zh.py）
-#   4. DeepSeek 自动翻译缺失/变更的文档（恢复被同步覆盖的自动翻译 → 翻译存量）
+#   4. 重放 Skills 页面加载器补丁（目录 gzip 化，见 patch-skills-loader.py）
+#   5. DeepSeek 自动翻译缺失/变更的文档（恢复被同步覆盖的自动翻译 → 翻译存量）
 # 输出：sync-report.md（供跟踪 issue 使用）、changed 输出
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -59,7 +60,16 @@ else
 fi
 echo "文档站 UI 翻译：${I18N_STATUS}" >> "$REPORT"
 
-# ---------- 4. DeepSeek 自动翻译 ----------
+# ---------- 4. Skills 页面加载器补丁（gzip 目录） ----------
+# rsync 会用官方版本覆盖 src/pages/skills/index.tsx，补丁需在每次同步后重放
+if python3 scripts/patch-skills-loader.py; then
+  LOADER_STATUS="正常"
+else
+  LOADER_STATUS="⚠️ 补丁失败（上游可能改写了加载器），技能页面将无法加载目录，需人工更新 scripts/patch-skills-loader.py"
+fi
+echo "Skills 页面加载器补丁：${LOADER_STATUS}" >> "$REPORT"
+
+# ---------- 5. DeepSeek 自动翻译 ----------
 # 先恢复被 rsync --delete 删除的自动翻译（上游补了官方翻译的不会被恢复，官方 wins），
 # 再翻译缺失/变更的文档（受 MAX_DOCS_PER_RUN 限制，默认 40 篇/轮）。
 echo "运行 LLM 自动翻译……"
@@ -71,7 +81,7 @@ else
   echo "LLM 翻译：⚠️ 未生成报告（脚本异常，见 Actions 日志）" >> "$REPORT"
 fi
 
-# ---------- 5. 变更清单 ----------
+# ---------- 6. 变更清单 ----------
 echo "" >> "$REPORT"; echo "## website/ 变更文件" >> "$REPORT"
 CHANGES=$(git status --porcelain website/ landing/ sync/ scripts/ | head -100)
 if [ -n "$CHANGES" ]; then
