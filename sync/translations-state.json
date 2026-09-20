@@ -185,12 +185,6 @@
     "status": "llm",
     "model": "deepseek-chat"
   },
-  "user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-merge-reconciler.md": {
-    "sha256": "6b05969e04632b16d9ca01bbf5cf7c1d30332a152c6c56cdfe1b2ecb38df489e",
-    "updated": "2026-09-15T10:32:34.030Z",
-    "status": "llm",
-    "model": "deepseek-chat"
-  },
   "user-guide/skills/bundled/devops/devops-sdlc-review.md": {
     "sha256": "17e100e8631beea2ac27f7ee77ab4e8c850f69474dad4e2846b4e9ad9aed0e7e",
     "updated": "2026-09-15T10:32:42.701Z",
@@ -200,12 +194,6 @@
   "user-guide/skills/bundled/email/email-email-inbox-triage.md": {
     "sha256": "f4b8333066e749f262b73304420be7c7845b2d63c54848fc7fadaf12db8fb28e",
     "updated": "2026-09-15T10:32:48.266Z",
-    "status": "llm",
-    "model": "deepseek-chat"
-  },
-  "user-guide/skills/bundled/github/github-github-issue-to-pr.md": {
-    "sha256": "b3a793bfecde1ac24b6379b431477295117e1d0b5a913b1da2f92b3e130678c4",
-    "updated": "2026-09-15T10:32:56.099Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
@@ -245,12 +233,6 @@
     "status": "llm",
     "model": "deepseek-chat"
   },
-  "user-guide/skills/bundled/productivity/productivity-session-librarian.md": {
-    "sha256": "bd63aa1dd039c09c291c36e90f5138b59a279294189da9c7c68dcfeab8f38ed8",
-    "updated": "2026-09-15T10:33:56.078Z",
-    "status": "llm",
-    "model": "deepseek-chat"
-  },
   "user-guide/skills/bundled/productivity/productivity-weekly-review-planning.md": {
     "sha256": "ff791148f1aa4b027cc613f9dba7180b975f259387482ca745c094fd986425e6",
     "updated": "2026-09-15T10:34:01.990Z",
@@ -260,12 +242,6 @@
   "user-guide/skills/bundled/productivity/productivity-xlsx.md": {
     "sha256": "532fa2b2e044ede0fb58909ae5cb61ef6022cf111be57634658ee8269648fa6a",
     "updated": "2026-09-15T10:34:12.368Z",
-    "status": "llm",
-    "model": "deepseek-chat"
-  },
-  "user-guide/skills/bundled/research/research-blocked-page-recovery.md": {
-    "sha256": "d18c6d919701158b8936176d62bdf2974aff4841485118868cebe595de331ca2",
-    "updated": "2026-09-15T10:34:19.109Z",
     "status": "llm",
     "model": "deepseek-chat"
   },
@@ -870,6 +846,12 @@
   "developer-guide/onboarding-recommendations.md": {
     "sha256": "ab0f7300a2d3e8f2417d3f1f4bf75e3a07627de5741188bad1a046728f5d71c5",
     "updated": "2026-09-20T05:36:12.612Z",
+    "status": "llm",
+    "model": "deepseek-chat"
+  },
+  "user-guide/skills/optional/autonomous-ai-agents/autonomous-ai-agents-agent-merge-conflict-arbiter.md": {
+    "sha256": "597f186040855b6ed8f53cd71daddef8711b21e89ddc87fbe6dbf130ebec73ba",
+    "updated": "2026-09-20T21:23:52.493Z",
     "status": "llm",
     "model": "deepseek-chat"
   }
