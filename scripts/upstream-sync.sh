@@ -32,6 +32,18 @@ rsync -a --delete \
   --exclude 'docusaurus.config.ts' \
   /tmp/upstream-hermes/website/ website/
 
+# 上游偶尔会让 website/ 页面引用 monorepo 其他目录（如 apps/shared），
+# 本仓库只 vendor website/，这类导入必然构建失败——提前在报告中标红
+ESCAPING_IMPORTS=$(grep -rlE 'from "\.\./\.\./\.\./\.\./' website/src/pages/ 2>/dev/null | sed -n '1,5p' || true)
+if [ -n "$ESCAPING_IMPORTS" ]; then
+  {
+    echo "⚠️ 以下页面引用了 website/ 之外的模块（上游 monorepo 路径），本仓库无法构建，需 vendor 对应目录或等上游修复："
+    echo '```'
+    echo "$ESCAPING_IMPORTS"
+    echo '```'
+  } >> "$REPORT"
+fi
+
 # ---------- 2. 落地页快照 ----------
 LANDING_STATUS="未变化"
 if curl -sSL --fail "https://hermes-agent.nousresearch.com/" -o landing/upstream.html.new; then
@@ -82,8 +94,10 @@ else
 fi
 
 # ---------- 6. 变更清单 ----------
+# 注意：管道末端不能用 head（读完即退出，超出上限时 git 收到 SIGPIPE，
+# pipefail 下整步以 141 崩溃）；sed 会读完全部输入，不会触发
 echo "" >> "$REPORT"; echo "## website/ 变更文件" >> "$REPORT"
-CHANGES=$(git status --porcelain website/ landing/ sync/ scripts/ | head -100)
+CHANGES=$(git status --porcelain website/ landing/ sync/ scripts/ | sed -n '1,100p')
 if [ -n "$CHANGES" ]; then
   changed="yes"
   {
