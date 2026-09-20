@@ -866,5 +866,11 @@
     "updated": "2026-09-15T22:05:30.553Z",
     "status": "llm",
     "model": "deepseek-chat"
+  },
+  "developer-guide/onboarding-recommendations.md": {
+    "sha256": "ab0f7300a2d3e8f2417d3f1f4bf75e3a07627de5741188bad1a046728f5d71c5",
+    "updated": "2026-09-20T05:36:12.612Z",
+    "status": "llm",
+    "model": "deepseek-chat"
   }
 }
