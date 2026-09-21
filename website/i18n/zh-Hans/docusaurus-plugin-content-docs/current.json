@@ -254,5 +254,13 @@
   "sidebar.docs.category.Tools & Skills Reference": {
     "message": "工具与技能参考",
     "description": "The label for category 'Tools & Skills Reference' in sidebar 'docs'"
+  },
+  "sidebar.docs.link.Browse Skills": {
+    "message": "Browse Skills",
+    "description": "The label for link 'Browse Skills' in sidebar 'docs', linking to '/skills'"
+  },
+  "sidebar.docs.link.Browse Plugins": {
+    "message": "Browse Plugins",
+    "description": "The label for link 'Browse Plugins' in sidebar 'docs', linking to '/plugins'"
   }
 }
