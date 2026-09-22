@@ -1,14 +1,14 @@
 ## 本轮 LLM 自动翻译（DeepSeek）
 
 - 待翻译存量：1 篇；本轮处理：1 篇
-- 🤖 翻译成功：1 篇（含恢复 137 篇）
+- 🤖 翻译成功：1 篇（含恢复 138 篇）
 - 🛑 已达重试上限（3 轮），停止自动重试，需人工翻译：7 篇
 - ⚠️ 失败待人工：0 篇
 
 <details><summary>成功清单</summary>
 
 ```
-user-guide/session-storage-recovery.md
+developer-guide/plugins/application-declarations.md
 ```
 </details>
 

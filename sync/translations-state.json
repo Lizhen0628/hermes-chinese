@@ -860,5 +860,11 @@
     "updated": "2026-09-21T22:33:42.884Z",
     "status": "llm",
     "model": "deepseek-chat"
+  },
+  "developer-guide/plugins/application-declarations.md": {
+    "sha256": "50e9511dfea67348cb1f429d842d27d37b11ced19e19a9e35778e752e6b6918d",
+    "updated": "2026-09-22T21:57:25.069Z",
+    "status": "llm",
+    "model": "deepseek-chat"
   }
 }
