@@ -866,5 +866,9 @@
     "updated": "2026-09-22T21:57:25.069Z",
     "status": "llm",
     "model": "deepseek-chat"
+  },
+  "user-guide/features/bot-screen.md": {
+    "attempts": 1,
+    "last_failed": "2026-09-23T22:11:36.904Z"
   }
 }
