@@ -868,7 +868,9 @@
     "model": "deepseek-chat"
   },
   "user-guide/features/bot-screen.md": {
-    "attempts": 1,
-    "last_failed": "2026-09-23T22:11:36.904Z"
+    "sha256": "e9567a32826ff5ced9b92248114d3c706a58ee1d217624933326300299e5c307",
+    "updated": "2026-09-24T22:12:08.806Z",
+    "status": "llm",
+    "model": "deepseek-chat"
   }
 }
