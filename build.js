@@ -80,6 +80,7 @@ for (const entry of [
   "font",
   "assets",
   "BingSiteAuth.xml", // Bing Webmaster 站点验证
+  "google9494875faa161044.html", // Google Search Console 站点验证
 ]) {
   const src = join(landing, entry);
   if (!existsSync(src)) {
