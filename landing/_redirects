@@ -1,0 +1,3 @@
+# Google Search Console 验证文件：CF Pages Pretty URLs 会把 /xxx.html 308 到无后缀路径，
+# 而 GSC 要求验证文件在原始 URL 直接 200。这里用 200 重写（proxy）绕过跳转。
+/google9494875faa161044.html /google9494875faa161044 200

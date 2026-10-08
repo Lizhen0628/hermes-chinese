@@ -81,6 +81,7 @@ for (const entry of [
   "assets",
   "BingSiteAuth.xml", // Bing Webmaster 站点验证
   "google9494875faa161044.html", // Google Search Console 站点验证
+  "_redirects", // CF Pages 重定向规则（GSC 验证文件 200 重写）
 ]) {
   const src = join(landing, entry);
   if (!existsSync(src)) {
